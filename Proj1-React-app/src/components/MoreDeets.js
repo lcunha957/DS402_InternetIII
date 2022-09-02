@@ -1,3 +1,5 @@
+
+/* Fonte: https://www.youtube.com/watch?v=IhWFs0diAPE
 import React from "react";
 import "./Card.css";
 import {Card} from "react-bootstrap";
@@ -28,3 +30,4 @@ const MoreDeets = () =>{
 };
 
 export default MoreDeets; 
+*/
