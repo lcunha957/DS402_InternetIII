@@ -6,7 +6,7 @@ import NumeroAleatorio from "../NumeroAleatorio";
 import PalavraAleatoria from "../PalavraAleatoria";
 import CoresAleatorias from "../CoresAleatorias";
  //Exercício 3.2. conforme apostila 2 de react
-const Cards = () => {
+const Cards = (props) => {
 
 const cardInfo = [
     {title:"Exemplo01" , body: Exemplo01},
@@ -18,7 +18,7 @@ const estilo = {
     backgroundColor: "#5F9EA0",
     borderColor: "#5F9EA0",
     width: "25 rem"
-},
+};
 
 
 const renderCard = (card, index) => {
