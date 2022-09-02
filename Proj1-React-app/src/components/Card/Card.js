@@ -16,7 +16,7 @@ return(
 </div>
 ); }*/
 
-const Card = () =>{
+const CardX = () =>{
 
     const cardInfo = [
         {image: "https://r8p9h9p8.rocketcdn.me/wp-content/uploads/2022/07/lebron-james-comprar-time-nba.jpg", title: "Lebron James", text: "HE GOAT"},
@@ -40,4 +40,4 @@ const Card = () =>{
     return <div className="App">{cardInfo.map(renderCard)}</div>
 };
 
-export default Card; 
+export default CardX; 
