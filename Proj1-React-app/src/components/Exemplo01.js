@@ -6,8 +6,7 @@ export default function Exemplo01(props) {
        return(
            <div>
                <h1>Primeiro Componente</h1>
-               <p>
-   Nome: <strong>{ props.nome }</strong> </p>
+               <p> Nome: <strong>{ props.nome }</strong> </p>
    <p>
    Idade para dirigir: { idadeIdeal } </p>
    <VerificaIdade nome={props.nome} idade={props.idade} /> </div>
