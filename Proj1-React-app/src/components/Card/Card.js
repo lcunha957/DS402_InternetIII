@@ -7,7 +7,7 @@ import "./Card.css";
     const estilo = {
         backgroundColor: "#5F9EA0",
         borderColor: "#5F9EA0",
-        width: "25 rem"
+        width: "45 rem"
     }
   
     return(
