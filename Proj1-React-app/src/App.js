@@ -11,22 +11,21 @@ import CoresAleatorias from './components/CoresAleatorias';
 export default function App(props) {
     return (
     <div className="app" >
-      <h1>Exemplos com React </h1>
+      <h1 id ="titPagePrinc"> Exemplos com React </h1>
       <div className="cards">
         <div class= "container">
           <div class="row">
-            <div class = "col-lg-10">
-            <Card align-items="left" titulo="Exemplo01"> <Exemplo01 PrimeiroNome="Lunara" SegundoNome="Cunha" idade="26" nota ="9,0" resultado= "Aprovado"></Exemplo01></Card>
+            <div class = "col-md-6">
+            <Card align-items="left" titulo="Exemplo 01"> <Exemplo01 PrimeiroNome="Lunara" SegundoNome="Cunha" idade="26" nota ="9,0" resultado= "Aprovado"></Exemplo01></Card>
             </div>
-          <div class= "col-lg-10">
-          <Card align-items="center"titulo="NumeroAleatorio"><NumeroAleatorio min={20} max={40}></NumeroAleatorio> </Card>
+          <div class= "col-md-6">
+          <Card align-items="center"titulo="Numero Aleatorio"><NumeroAleatorio min={20} max={40}></NumeroAleatorio> </Card>
           </div>
         </div>
       <div class="row">
-        <div class ="col-md-10"><Card titulo="PalavraAleatoria"><PalavraAleatoria min={0} max={5}></PalavraAleatoria></Card></div>
-        <div class ="col-md-10"><Card titulo="CoresAleatorias"><CoresAleatorias min={0} max={15}></CoresAleatorias></Card></div>
-           
-      </div>
+        <div class ="col-md-6"><Card titulo="Palavra Aleatoria"><PalavraAleatoria min={0} max={5}></PalavraAleatoria></Card></div>
+        <div class ="col-md-6"><Card titulo="Cores Aleatorias"><CoresAleatorias min={0} max={15}></CoresAleatorias></Card></div>
+          </div>
       </div>
                    
       </div>   

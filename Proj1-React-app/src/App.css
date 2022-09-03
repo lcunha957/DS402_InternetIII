@@ -3,4 +3,12 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-    
+   
+#titPagePrinc{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-style: italic;
+  font-family: cursive;
+  color: rgb(25, 25, 180);
+}

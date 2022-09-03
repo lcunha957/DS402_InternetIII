@@ -6,7 +6,7 @@ export default function NumeroAleatorio(props) {
     console.log("num=" + num);
    return(
        <div>
-           <h1> Numero Aleatório:<br/></h1><h5>{num}</h5>
+           <h3> Numero Aleatório:<br/></h3><h5>{num}</h5>
        </div>
    ); 
 }
