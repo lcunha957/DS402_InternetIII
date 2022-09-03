@@ -1,14 +1,14 @@
 import React from "react";
+import VerificaIdade from './VerificaIdade';
 
-export default function Exemplo01(props){
-   return (
-      <div>
-   <h3> Seja bem-vindo(a) ao nosso primeiro componente!</h3><br/><br/>
-        <p> Primeiro Nome: <b>{props.PrimeiroNome}</b></p>
-        <p> Segundo Nome: <b>{props.SegundoNome}</b></p>
-        <p> idade: <b>{props.idade}</b></p>
-        <p> Sua média final é: <b>{props.nota}</b></p> 
-        <p> Situação: <b>{props.resultado}</b></p>
-      </div>
-   );  
-}
+export default function Exemplo01(props) {
+   let idadeIdeal = props.idade >= 18 ? props.idade : 18;
+       return(
+           <div>
+               <h1>Primeiro Componente</h1>
+               <p>
+   Nome: <strong>{ props.nome }</strong> </p>
+   <p>
+   Idade para dirigir: { idadeIdeal } </p>
+   <VerificaIdade nome={props.nome} idade={props.idade} /> </div>
+   ); }
