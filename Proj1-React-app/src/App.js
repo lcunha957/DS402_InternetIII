@@ -15,10 +15,10 @@ export default function App(props) {
       <div className="cards">
         <div class= "container">
           <div class="row">
-            <div class = "col-md-10">
+            <div class = "col-lg-10">
             <Card align-items="left" titulo="Exemplo01"> <Exemplo01 PrimeiroNome="Lunara" SegundoNome="Cunha" idade="26" nota ="9,0" resultado= "Aprovado"></Exemplo01></Card>
             </div>
-          <div class= "col-md-10">
+          <div class= "col-lg-10">
           <Card align-items="center"titulo="NumeroAleatorio"><NumeroAleatorio min={20} max={40}></NumeroAleatorio> </Card>
           </div>
         </div>

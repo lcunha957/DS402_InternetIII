@@ -14,7 +14,7 @@ export default function CoresAleatorias(props) {
     console.log("cor sorteada:" +estojo); 
    return(
        <div>
-           <h1> Cor Sorteada:<br/> {estojo}</h1>
+           <h1> Cor Sorteada:<br/></h1><h5>{estojo}</h5>
        </div>
    ); 
 }
