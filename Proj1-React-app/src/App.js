@@ -26,7 +26,7 @@ export default function App(props) {
         </div>
       <div class="row">
         <div class ="col-md-6"><Card align-items="right" titulo="Palavra Aleatoria"><PalavraAleatoria min={0} max={5}></PalavraAleatoria></Card></div>
-        <div class = "col-md-6"><Card align-items= "center" titulo="Comunicação Direta"><ExibeNotas><ObtemNotas nome={"Maria"} nota={5}></ObtemNotas></ExibeNotas></Card></div>
+        <div class = "col-md-6"><Card align-items= "center" titulo="Comunicação Direta"><ExibeNotas button="btnNotas"><ObtemNotas nome={"Maria"} nota={5}></ObtemNotas></ExibeNotas></Card></div>
         <div class ="col-md-6"><Card algin-items="right" titulo="Cores Aleatorias"><CoresAleatorias min={0} max={15}></CoresAleatorias></Card></div>
           </div>
            

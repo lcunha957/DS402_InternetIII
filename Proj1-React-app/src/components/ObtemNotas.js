@@ -5,7 +5,7 @@ export default function ObtemNotas(props){
 return(
 <div style={{ backgroundColor: '#FAF0E6', padding: '5px' }}> 
 <h2>Obtem Notas (filho)</h2>
-<button  style="margin: 20px; border-radius: 10px; background-color:#BD5784; color:#FF9800 " onClick={
+<button id="btnNotas" style="margin: 20px; border-radius: 10px; background-color:#BD5784; color:#FF9800 " onClick={
     function (e) {
         props.quandoClicar('Maria',5);
     }
