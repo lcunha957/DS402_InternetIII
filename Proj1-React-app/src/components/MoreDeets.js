@@ -17,7 +17,7 @@ const MoreDeets = () =>{
      const renderCard = (card, index) => {
          return (
             <Card style = {{ width: "18 rem" }} key ={index}>
-             <Card.Img variant = "top" src="{card.imahe}" ></Card.Img>   
+             <Card.Img variant = "top" src="{card.image}" ></Card.Img>   
             <Card.Body>
             <Card.title>{card.title}</Card.title>
             <Card.Text> {card.text}</Card.Text>
