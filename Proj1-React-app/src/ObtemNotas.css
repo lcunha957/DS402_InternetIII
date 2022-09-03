@@ -1,0 +1,21 @@
+#divDoObtemNotas {
+    background-color: #FAF0E6;
+    padding: 5 px;
+     
+}
+
+
+#btnNotas{
+    margin: 20 px;
+    border-radius:10 px;
+    background-color:#BD5784; 
+    color:#FF9800;
+
+}
+
+.ObtemNotas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: darkred;
+    }
