@@ -1,6 +1,5 @@
 import React from 'react';
 import ObtemNotas from './ObtemNotas';
-import "./ExibeNotas.css";
 
 export default function ExibeNotas(props){
 function Informacoes(nome,nota) { console.log(nome, nota);

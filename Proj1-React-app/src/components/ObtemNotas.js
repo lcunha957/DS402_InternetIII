@@ -1,8 +1,11 @@
 import React from 'react';
-import "./ObtemNotas.css";
+//import  ObtemNotasCss from "src/ObtemNotas.css"; 
 
 export default function ObtemNotas(props){
 // props.quandoClicar vai informar alguma coisa para o componente pai return(
+<style>
+    /* TO DO : fazer style puxando do ObtemNotas.css que não veio*/
+     </style>
 return(
 
 <div  id = "divDoObtemNotas"> 
