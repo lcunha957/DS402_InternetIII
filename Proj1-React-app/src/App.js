@@ -15,16 +15,16 @@ export default function App(props) {
       <div className="cards">
         <div class= "container">
           <div class="row">
-            <div class = "col-md-5">
+            <div class = "col-md-10">
             <Card align-items="left" titulo="Exemplo01"> <Exemplo01 PrimeiroNome="Lunara" SegundoNome="Cunha" idade="26" nota ="9,0" resultado= "Aprovado"></Exemplo01></Card>
             </div>
-          <div class= "col-md-5">
+          <div class= "col-md-10">
           <Card align-items="center"titulo="NumeroAleatorio"><NumeroAleatorio min={20} max={40}></NumeroAleatorio> </Card>
           </div>
         </div>
       <div class="row">
-        <div class ="col-md-5"><Card titulo="PalavraAleatoria"><PalavraAleatoria min={0} max={5}></PalavraAleatoria></Card></div>
-        <div class ="col-md-5"><Card titulo="CoresAleatorias"><CoresAleatorias min={0} max={15}></CoresAleatorias></Card></div>
+        <div class ="col-md-10"><Card titulo="PalavraAleatoria"><PalavraAleatoria min={0} max={5}></PalavraAleatoria></Card></div>
+        <div class ="col-md-10"><Card titulo="CoresAleatorias"><CoresAleatorias min={0} max={15}></CoresAleatorias></Card></div>
            
       </div>
       </div>

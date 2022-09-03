@@ -20,7 +20,7 @@ export default function PalavraAleatoria(props) {
    
   return(
       <div>
-          <h1> Fruta sorteada:{frutaDeFeira}</h1>
+          <h1> Fruta sorteada:<br/>{frutaDeFeira}</h1>
       </div>
   )
 }
