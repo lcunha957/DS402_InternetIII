@@ -7,11 +7,13 @@ import Footer from './components/template/Footer';
 
 function App() {
   return (
-      <div className="App">
-        <Logo />
-        <Menu />
-        <Main />
-        <Footer />
+    <div className="App">
+      <Logo />
+<Menu />
+<Main title="Bem Vindo!">
+<div>Cadastro de alunos, cursos e carômetro</div>
+</Main>
+<Footer />
 </div>
 ); }
 export default App;
