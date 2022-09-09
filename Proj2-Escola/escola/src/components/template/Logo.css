@@ -1,5 +1,5 @@
 aside.logo {
-    background-color: var(--bg-menu);
+    background-color: var (--bg-menu);
 }
 aside.logo img {
     width: 100%;
