@@ -1,8 +1,10 @@
 nav.menu {
     background-color: rgb(30, 30, 182);
     padding-left: 50px;
-    padding-right: 50px;
     text-align: right;
+    margin-left: 30px;
+    margin-right: 20px;
+    padding-top: 50px;
 }
 .menu a{
     text-decoration: none;
@@ -16,6 +18,4 @@ nav.menu {
     color: #538cc6;
 }
 
-.nav-item{
-   margin: 20px; 
-}
+

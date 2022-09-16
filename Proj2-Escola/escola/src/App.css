@@ -27,8 +27,7 @@
     grid-area:initial;
   }
   nav.menu {
-   padding: 20px;
-   text-align: right;
+  text-align: right;
    display: inline-block;
    margin-left: 100px;
   }
