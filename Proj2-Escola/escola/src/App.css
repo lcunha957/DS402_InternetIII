@@ -12,8 +12,8 @@
   .App {
   margin: 0px;
   display: grid;
-  grid-template-columns: var(--logo-width) 1fr;
-  grid-template-rows: var(--content-header-height) 1fr var(--content-
+  grid-template-columns: var(--logo-width) 5fr;
+  grid-template-rows: var(--content-header-height) 5fr var(--content-
   footer-height);
     grid-template-areas:
       "logo menu"
@@ -24,10 +24,10 @@
   }
         
   aside.logo{
-    grid-area: logo;
+    grid-area:initial;
   }
   nav.menu {
-    grid-area: menu;
+   padding: 20px;    
   }
   div.content {
     grid-area: content;
