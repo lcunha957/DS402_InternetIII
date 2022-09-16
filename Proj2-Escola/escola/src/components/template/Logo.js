@@ -4,6 +4,8 @@ import logo from '../../assets/imagens/logo_escola.png';
 
 export default function Logo(props) { return (
     <aside className="logo">
-        Logo
+    <a href="/" className="logo">
+    <img src={ logo } alt="Logo" />
+</a>
 </aside>
 ) }
