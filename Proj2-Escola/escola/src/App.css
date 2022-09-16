@@ -10,31 +10,19 @@
   }
   /* Lay-out */
   .App {
-  margin: 0px;
-  display: grid;
-  grid-template-columns: var(--logo-width) 5fr;
-  grid-template-rows: var(--content-header-height) 5fr var(--content-
-  footer-height);
-    grid-template-areas:
-      "logo menu"
-      "content content"
-      "footer footer";
-    height: 100vh;
-    background-color: #e0a14d;
+  
   }
         
   aside.logo{
-    grid-area:initial;
+    
   }
   nav.menu {
-  text-align: right;
-   display: inline-block;
-   margin-left: 100px;
+ 
   }
   div.content {
-    grid-area: content;
+   
   }
 
   footer.footer {
-    grid-area: footer;
+   
   }
