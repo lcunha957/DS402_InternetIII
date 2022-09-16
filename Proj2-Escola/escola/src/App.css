@@ -29,7 +29,8 @@
   nav.menu {
    padding: 20px;
    text-align: right;
-   align-items: baseline;    
+   display: inline-block;
+   margin-left: 100px;
   }
   div.content {
     grid-area: content;
