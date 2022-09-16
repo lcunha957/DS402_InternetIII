@@ -1,12 +1,17 @@
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+
 export default function Menu(props) { return (
-  <nav className='menu'>
-      <a href="#/">
-Alunos
-      </a>
-      <a href="#/">
-Cursos
-      </a>
-      <a href="#/">
-Carômetro
-</a> </nav>
+     <Navbar bg="light" expand="lg">
+      <Container>
+          <nav class="menu">
+            <Nav.Link href="#alunos">Alunos</Nav.Link>
+            <Nav.Link href="#cursos">Cursos</Nav.Link>
+            <Nav.Link href="#carometro">Carômetro</Nav.Link>
+          </nav>
+      </Container>
+    </Navbar>
+
 ) }
