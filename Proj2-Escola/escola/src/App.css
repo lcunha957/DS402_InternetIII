@@ -28,7 +28,8 @@
   }
   nav.menu {
    padding: 20px;
-   align-items: flex-end;    
+   text-align: right;
+   align-items: baseline;    
   }
   div.content {
     grid-area: content;
