@@ -1,14 +1,21 @@
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+
+
 export default function Menu(props) { return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">          <li class="nav-item active">
-            <a class="nav-link" href="#"> alunos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Cursos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Carômetro</a>
-          </li>
-          </div>
-  </nav>
+     <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#alunos">React com Dot.Net</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#alunos">Alunos</Nav.Link>
+            <Nav.Link href="#cursos">Cursos</Nav.Link>
+            <Nav.Link href="#carometro">Carômetro</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
 ) }
