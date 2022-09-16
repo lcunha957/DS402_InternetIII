@@ -1,4 +1,4 @@
-nav.menu {
+.me-auto {
     background-color: rgb(30, 30, 182);
     padding-left: 50px;
     text-align: right;
@@ -6,15 +6,15 @@ nav.menu {
     margin-right: 20px;
     padding-top: 50px;
 }
-.menu a{
+.Nav.Link{
     text-decoration: none;
-    color: #ffffff;
+    color:crimson; 
     padding: 10px;
     font-size: 30px;
     padding: 5px;
     margin-top: 20px;
 }
-.menu a:hover {
+.Nav.Link:hover {
     color: #538cc6;
 }
 
