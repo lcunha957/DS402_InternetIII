@@ -27,7 +27,8 @@
     grid-area:initial;
   }
   nav.menu {
-   padding: 20px;    
+   padding: 20px;
+   align-items: flex-end;    
   }
   div.content {
     grid-area: content;
