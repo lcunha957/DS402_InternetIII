@@ -1,9 +1,7 @@
 :root {
-  --bg-menu: #06a005ab;
+  --bg-menu: #bdbbbb;
 }
 body {
   box-sizing: border-box;
   font-family: "Pacifico", sans-serif;
-  font-family: "Pacifico", cursive;
-
 }
