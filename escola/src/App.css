@@ -1,6 +1,29 @@
+/* Lay-out */
 .App {
-  text-align: center;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: var(--logo-width) 1fr;
+  grid-template-rows: var(--content-header-height) 1fr var(--content-footer-height);
+  grid-template-areas: "logo menu" "content content" "footer footer"; 
+  height: 100vh;
+  background-color: #f5f5f5;
 }
+
+aside.logo{
+grid-area: logo;
+} 
+
+nav.menu {
+grid-area: menu; 
+}
+
+div.content { 
+  grid-area: content; 
+}
+
+footer.footer { 
+  grid-area: footer;
+ }
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +59,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+:root { 
+  --bg-menu: #bdbbbb;
+  --logo-width: 150px;
+  --content-header-height: 60px;
+  --content-footer-height: 40px; 
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Pacifico", sans-serif; 
+}
+
