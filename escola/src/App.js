@@ -10,7 +10,9 @@ function App() {
      <div className="App"> 
      <Logo />
      <Menu />
-     <Main />
+     <Main title="Bem Vindo!"> 
+     <div>Cadastro de alunos, cursos e carômetro</div>
+    </Main>
     <Footer /> 
     </div>
       );
