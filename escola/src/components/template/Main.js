@@ -7,12 +7,14 @@ import Header from './Header';
 export default function Main(props) { 
     
     return (
-         <React.Fragment> 
-        <Header /> 
-    <main className="content">
-         Conteúdo
-          </main>
-           </React.Fragment> 
+        <div className="content"> 
+        <Header {...props} />
+         <main>
+             <div>
+                 {props.children} 
+                 </div>
+                  </main> 
+                  </div>
            )
         
         }
