@@ -27,18 +27,24 @@ export default class CrudAluno extends Component {
           </thead>
 
           <tbody>
-            <tr>
-              <td>{Alunos[0].ra}</td>
-              <td>{Alunos[0].nome}</td>
-              <td>{Alunos[0].codCurso}</td>
-            </tr>
+          {Alunos.map( 
+                      (aluno) =>
+                       <tr key={aluno.id}>
+                        <td>{aluno.ra}</td>
+                        <td>{aluno.nome}</td>
+                        <td>{aluno.codCurso}</td>
+                         </tr>
+          )}
           </tbody>
         </table>
       </div>
     );
   }
 
-  render() {
-    return <Main title={title}></Main>;
-  }
+  render() { 
+            return (
+                <Main title={title}> 
+                {this.renderTable()} 
+                </Main> )
+}
 }
