@@ -4,7 +4,7 @@ export default function Footer(props){
     
     return(
          <footer className="footer"> 
-Rodapé
+<span> .: Using ReactJS and ASP.Net Core :. </span>
  </footer>
   )
  }
