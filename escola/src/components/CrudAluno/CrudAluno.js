@@ -19,7 +19,7 @@ export default class CrudAluno extends Component {
       <div className="listagem">
         <table className="listaAlunos" id="tblListaAlunos">
           <thead>
-            <tr className="cabecTabela">
+            <tr className="cabecTabelaAluno">
               <th className="tabTituloRa">Ra</th>
               <th className="tabTituloNome">Nome</th>
               <th className="tabTituloCurso">Curso</th>

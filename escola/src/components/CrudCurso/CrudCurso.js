@@ -20,7 +20,7 @@ export default class CrudCurso extends Component {
       <div className="listagemCursos">
         <table className="listaCurso" id="tblListaCursos">
           <thead>
-            <tr className="cabecTabela">
+            <tr className="cabecTabelaCurso">
               <th className="tabTitulocodCurso">Código </th>
               <th className="tabTituloNomeCurso">Nome</th>
               <th className="tabTituloPeríodo">Período</th>
