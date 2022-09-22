@@ -1,28 +1,37 @@
 .tituloListagem {
   margin-left: 20px;
+  
 }
 
 .listaCursos {
   margin-left: 20px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+    "Lucida Sans", Arial, sans-serif"";
+    
+    
 }
 
 .cabecTabela {
-  color: white;
-  background-color:orangered;
+  color: rgb(232, 220, 220);
+  background-color:rgb(124, 42, 13);
   font-size: 20px;
-  text-align: left;
+  text-align: center;
+  width: 800px;
 }
 
 th,
 td {
   padding: 10px;
+  text-align: center;
 }
 .tabTitulocodCurso {
   width: 100px;
 }
 
 .tabTituloNomeCurso {
-  width: 400px;
+  width: 350px;
+}
+
+.tabTituloPeríodo{
+  width: 200px;
 }
