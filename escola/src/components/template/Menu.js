@@ -2,7 +2,7 @@ import './Menu.css';
 
 export default function Menu(props) { return (
     <nav className='menu'>
-        <a href="#/">
+        <a href="/alunos">
 Alunos
         </a>
         <a href="#/">
