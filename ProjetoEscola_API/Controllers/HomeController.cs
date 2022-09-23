@@ -7,9 +7,10 @@ namespace ProjetoEscola_API.Controllers
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        public String Inicio()
+        public ActionResult Inicio()
         {
-            return new ContentResult{
+            return new ContentResult
+            {
             ContentType = "text/html",
             Content = "<h1>API Projeto Escola: funcionou!!!!</h1>"
             };

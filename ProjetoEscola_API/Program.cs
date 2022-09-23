@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjetoEscola_API.Data;
-using appsettings.Development.json;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +13,16 @@ builder.Services.AddSwaggerGen();
 
 // Add DbContext
 
+string SqlServerConnection = builder.Configuration.GetConnectionString("StringConexaoSQLServer");
+
+
 builder.Services.AddDbContext<EscolaContext>(options =>
-{options.UseSqlServer(builder.Configuration.GetConnectionString(“StringConexaoSQLServer”));});
+
+{options.UseSqlServer(SqlServerConnection);
+
+}
+
+);
 
 
 var app = builder.Build();
