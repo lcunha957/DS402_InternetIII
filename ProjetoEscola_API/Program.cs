@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using ProjetoEscola_API.Data;
+using appsettings.Development.json;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add DbContext
+
+builder.Services.AddDbContext<EscolaContext>(options =>
+{options.UseSqlServer(builder.Configuration.
+GetConnectionString(“StringConexaoSQLServer”));});
+
 
 var app = builder.Build();
 

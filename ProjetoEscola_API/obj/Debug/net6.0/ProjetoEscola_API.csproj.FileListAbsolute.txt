@@ -25,3 +25,13 @@ C:\Users\User\Documents\GitHub\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net
 C:\Users\User\Documents\GitHub\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.pdb
 C:\Users\User\Documents\GitHub\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.genruntimeconfig.cache
 C:\Users\User\Documents\GitHub\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ref\ProjetoEscola_API.dll
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.csproj.AssemblyReference.cache
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.AssemblyInfoInputs.cache
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.AssemblyInfo.cs
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.csproj.CoreCompileInputs.cache
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.dll
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\refint\ProjetoEscola_API.dll
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.pdb

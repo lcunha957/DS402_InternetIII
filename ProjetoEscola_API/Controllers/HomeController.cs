@@ -9,7 +9,10 @@ namespace ProjetoEscola_API.Controllers
         [HttpGet]
         public String Inicio()
         {
-            return "Funcionou!";
+            return new ContentResult{
+            ContentType = "text/html",
+            Content = "<h1>API Projeto Escola: funcionou!!!!</h1>"
+            };
         }
     }
 }
