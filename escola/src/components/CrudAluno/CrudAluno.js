@@ -26,11 +26,11 @@ export default class CrudAluno extends Component {
 
   state={...initialState}
 
-  componentDidMount() {
-    axios(urlAPI).then(resp=>
-      {console.log(resp.data)
-      })
-    }
+ componentDidMount() {
+  axios(urlAPI).then(resp => {
+    this.setState ({ lista: resp.data })
+  })
+ }
 
   renderTable() {
     return (
