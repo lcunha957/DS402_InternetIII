@@ -8,7 +8,7 @@ import Main from "../template/Main";
 
 const title = "Cadastro de Alunos";
 
-const urlAPI="http://localhost:5176/api/aluno";
+const urlAPI="http://localhost:5277/api/aluno";
 
 const initialState= { 
   aluno:{ id: 0,  ra: '', nome:' ', codCurso: 0},

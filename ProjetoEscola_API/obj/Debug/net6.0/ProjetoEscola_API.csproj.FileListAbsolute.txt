@@ -99,3 +99,5 @@ C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\Pr
 C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.csproj.CopyComplete
 C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ProjetoEscola_API.genruntimeconfig.cache
 C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\obj\Debug\net6.0\ref\ProjetoEscola_API.dll
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\bin\Debug\net6.0\package-lock.json
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\ProjetoEscola_API\bin\Debug\net6.0\package.json
