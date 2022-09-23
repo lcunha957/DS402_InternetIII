@@ -14,8 +14,7 @@ builder.Services.AddSwaggerGen();
 // Add DbContext
 
 builder.Services.AddDbContext<EscolaContext>(options =>
-{options.UseSqlServer(builder.Configuration.
-GetConnectionString(“StringConexaoSQLServer”));});
+{options.UseSqlServer(builder.Configuration.GetConnectionString(“StringConexaoSQLServer”));});
 
 
 var app = builder.Build();

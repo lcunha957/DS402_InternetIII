@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-usingProjetoEscola_API.Models;
+using ProjetoEscola_API.Models;
 using System.Diagnostics.CodeAnalysis;
 
 namespace ProjetoEscola_API.Data
