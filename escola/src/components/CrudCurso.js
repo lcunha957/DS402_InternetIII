@@ -110,15 +110,15 @@ export default class CrudCurso extends Component {
               onChange={ e => this.atualizaCampo(e)} 
               />
 
-<label> Período: </label> 
-              <input type="text"
-              id="periodoCurso" 
-              placeholder="periodo"
-              className="form-input" 
-              name="periodoCurso"
-              value={this.state.curso.periodo}
-              onChange={ e => this.atualizaCampo(e)}
-               /> 
+<label> Período: </label>
+             <input type="text"
+              id="periodo"
+              placeholder="Turno que estuda"
+              className="form-input"
+              name="periodo"
+              value={this.state.curso.periodo} 
+              onChange={ e => this.atualizaCampo(e)} 
+              />
 
 <button className="btnSalvar"
                 onClick={e => this.salvar(e)} >
