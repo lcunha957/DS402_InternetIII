@@ -116,7 +116,7 @@ export default class CrudCurso extends Component {
               placeholder="M, V ou N"
               className="form-input" 
               name="periodoCurso"
-              value={this.state.aluno.periodo}
+              value={this.state.curso.periodo}
               onChange={ e => this.atualizaCampo(e)}
                /> 
 
