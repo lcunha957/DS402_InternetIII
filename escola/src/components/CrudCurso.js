@@ -11,7 +11,7 @@ const title = "Cadastro de Cursos";
 const urlAPI="http://localhost:5277/api/curso";
 
 const initialState = {
-  curso:{id: 0, codCurso: 0, nomeCurso: '', periodo:''},
+  curso:{id: 0, codCurso: 0, nomeCurso: ' ', periodo: ' '},
   lista:[]
 }
 
@@ -97,8 +97,7 @@ export default class CrudCurso extends Component {
                    className="form-input"
                    name="codCurso" 
                    value={this.state.curso.codCurso}
-                   required
-                  onChange={ e => this.atualizaCampo(e)}
+                   onChange={ e => this.atualizaCampo(e)}
                     />
 
 <label> Nome do Curso: </label>
@@ -108,7 +107,6 @@ export default class CrudCurso extends Component {
               className="form-input"
               name="nomeCurso"
               value={this.state.curso.nomeCurso} 
-              required
               onChange={ e => this.atualizaCampo(e)} 
               />
 
@@ -119,7 +117,6 @@ export default class CrudCurso extends Component {
               className="form-input" 
               name="periodoCurso"
               value={this.state.curso.periodo}
-              required
               onChange={ e => this.atualizaCampo(e)}
                /> 
 
@@ -127,6 +124,7 @@ export default class CrudCurso extends Component {
                 onClick={e => this.salvar(e)} >
                    Salvar
                     </button> 
+                    
                     <button className="btnCancela" 
                     onClick={e => this.limpar(e)} > 
                     Cancelar 
