@@ -11,6 +11,7 @@ namespace ProjetoEscola_API.Models{
         [StringLength(5)]
         public string? ra { get; set; }
         [Required(ErrorMessage = "Nome com até 30 letras")]
+        [DisplayName("Nome do curso")]
         [StringLength(30)]
         public string? nome { get; set; }
         [Required(ErrorMessage = "Use as setas para ter o curso com 2 números")]
