@@ -24,7 +24,7 @@ const Alunos = [
 
 export default class CrudAluno extends Component {
 
-  state={...initialState}
+  state={ ...initialState }
 
  componentDidMount() {
   axios(urlAPI).then(resp => {
@@ -37,9 +37,11 @@ export default class CrudAluno extends Component {
   }
 
   salvar() { 
+
     const aluno = this.state.aluno; 
     aluno.codCurso = Number(aluno.codCurso); 
-    const metodo = 'post'; 
+    const metodo = aluno.id ? 'put' : 'post'; 
+    const url = aluno.id ? `${urlAPI}/${aluno.id}` : urlAPI;
     
     axios[metodo](urlAPI, aluno) 
     .then(resp => {
@@ -48,9 +50,9 @@ export default class CrudAluno extends Component {
       }) 
     }
 
-    getListaAtualizada(aluno) {
+    getListaAtualizada(aluno,add = true) {
        const lista = this.state.lista.filter(a => a.id !== aluno.id);
-        lista.unshift(aluno); 
+       if (add) lista.unshift(aluno); 
         return lista;
        }
 
@@ -62,6 +64,24 @@ export default class CrudAluno extends Component {
           //atualizar o state 
           this.setState({ aluno }); 
         }
+
+        carregar(aluno) {
+           this.setState({ aluno }) 
+          }
+
+
+        remover(aluno) {
+           const url = urlAPI + "/" + aluno.id;
+            if (window.confirm("Confirma remoção do aluno: " + aluno.ra)) { 
+              console.log("entrou no confirm");
+              
+              axios['delete'](url, aluno) 
+              .then(resp => { 
+                const lista = this.getListaAtualizada(aluno, false) 
+                this.setState({ aluno: initialState.aluno, lista })
+               })
+               }
+              }
 
         renderForm() {
            return (
@@ -129,6 +149,15 @@ export default class CrudAluno extends Component {
                         <td>{aluno.ra}</td>
                         <td>{aluno.nome}</td>
                         <td>{aluno.codCurso}</td>
+                        <td> 
+                          <button onClick={() => this.carregar(aluno)} >
+                             Altera
+                              </button> 
+                              </td> <td> 
+                                <button onClick={() => this.remover(aluno)} >
+                                   Remove 
+                                   </button>
+                                    </td>
                          </tr>
           )}
           </tbody>
