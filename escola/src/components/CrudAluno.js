@@ -96,19 +96,17 @@ export default class CrudAluno extends Component {
                 name="ra" 
                 value={this.state.aluno.ra} 
                 required
-                maxLength={6}
                 onChange={ e => this.atualizaCampo(e)}
                  />
 
             <label> Nome: </label>
              <input type="text"
               id="nome"
-              placeholder="Nome"
+              placeholder="Fulano da Silva"
               className="form-input"
               name="nome"
               value={this.state.aluno.nome}
               required
-              maxLength={30} 
               onChange={ e => this.atualizaCampo(e)} 
               />
 
@@ -120,7 +118,6 @@ export default class CrudAluno extends Component {
               name="codCurso"
               value={this.state.aluno.codCurso}
               required
-              maxLength={2}
               onChange={ e => this.atualizaCampo(e)}
                /> 
 
@@ -128,6 +125,7 @@ export default class CrudAluno extends Component {
                 onClick={e => this.salvar(e)} >
                    Salvar
                     </button> 
+
                     <button className="btnCancelar" 
                     onClick={e => this.limpar(e)} > 
                     Cancelar 
