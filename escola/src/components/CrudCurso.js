@@ -113,7 +113,7 @@ export default class CrudCurso extends Component {
 <label> Período: </label> 
               <input type="text"
               id="periodoCurso" 
-              placeholder="M, V ou N"
+              placeholder="periodo"
               className="form-input" 
               name="periodoCurso"
               value={this.state.curso.periodo}
@@ -124,7 +124,7 @@ export default class CrudCurso extends Component {
                 onClick={e => this.salvar(e)} >
                    Salvar
                     </button> 
-                    
+
                     <button className="btnCancela" 
                     onClick={e => this.limpar(e)} > 
                     Cancelar 
