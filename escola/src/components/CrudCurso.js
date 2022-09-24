@@ -124,7 +124,7 @@ export default class CrudCurso extends Component {
                 onClick={e => this.salvar(e)} >
                    Salvar
                     </button> 
-                    <button className="btnCancelar" 
+                    <button className="btnCancela" 
                     onClick={e => this.limpar(e)} > 
                     Cancelar 
                     </button>
