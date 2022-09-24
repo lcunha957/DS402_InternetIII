@@ -51,7 +51,7 @@ export default class CrudAluno extends Component {
     }
 
     getListaAtualizada(aluno,add = true) {
-       const lista = this.state.listaAluno.filter(a => a.id !== aluno.id);
+       const lista = this.state.lista.filter(a => a.id !== aluno.id);
        if (add) lista.unshift(aluno); 
         return lista;
        }
@@ -147,7 +147,7 @@ export default class CrudAluno extends Component {
           </thead>
 
           <tbody>
-          {this.state.listaAluno.map( 
+          {this.state.lista.map( 
                       (aluno) =>
                        <tr key={aluno.id}>
                         <td>{aluno.ra}</td>
