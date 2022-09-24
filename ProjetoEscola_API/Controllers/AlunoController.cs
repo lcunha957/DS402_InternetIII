@@ -75,10 +75,28 @@ namespace ProjetoEscola_API.Controllers
             return Ok();
         }
 
-        [HttpDelete("{AlunoRA}")]
-        public ActionResult delete(string AlunoRA)
+        [HttpDelete("{AlunoId}")]
+        public async Task<ActionResult> delete(int AlunoId)
         {
-            return Ok();
+            try
+            {
+                //verifica se existe aluno a ser excluído
+                var aluno = await _context.Aluno.FindAsync(AlunoId);
+                if (aluno == null)
+                { //método do EF
+                    return NotFound();
+                }
+                _context.Remove(aluno);
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+            catch
+            {
+                return this.StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Falha no acesso ao banco de dados."
+                );
+            }
         }
     }
 }
