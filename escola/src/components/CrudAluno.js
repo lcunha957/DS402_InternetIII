@@ -96,7 +96,7 @@ export default class CrudAluno extends Component {
                 name="ra" 
                 value={this.state.aluno.ra} 
                 required
-                maxLength={5}
+                maxLength={6}
                 onChange={ e => this.atualizaCampo(e)}
                  />
 
