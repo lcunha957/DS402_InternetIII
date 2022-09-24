@@ -12,7 +12,7 @@ const urlAPI="http://localhost:5277/api/curso";
 
 const initialState = {
   curso:{id: 0, codCurso: 0, nomeCurso: '', periodo:''},
-  listaCurso:[]
+  lista:[]
 }
 
 /*const Cursos = [
@@ -29,7 +29,7 @@ export default class CrudCurso extends Component {
 
   componentDidMount() {
     axios(urlAPI).then(resp => {
-      this.setState ({ listaCurso: resp.data })
+      this.setState ({ lista: resp.data })
     })
    }
 
@@ -46,15 +46,15 @@ export default class CrudCurso extends Component {
     
     axios[metodo](urlAPI, curso) 
     .then(resp => {
-       const listaCurso = this.getListaAtualizada(resp.data)
-       this.setState({ curso: initialState.curso, listaCurso }) 
+       const lista = this.getListaAtualizada(resp.data)
+       this.setState({ curso: initialState.curso, lista }) 
       }) 
     }
 
     getListaAtualizada(curso,add = true) {
-      const listaCurso = this.state.listaCurso.filter(c => c.id !== curso.id);
-      if (add) listaCurso.unshift(curso); 
-       return listaCurso;
+      const lista = this.state.lista.filter(a => a.id !== curso.id);
+      if (add) lista.unshift(curso); 
+       return lista;
       }
 
       atualizaCampo(event) { 
@@ -78,8 +78,8 @@ export default class CrudCurso extends Component {
              
              axios['delete'](url, curso) 
              .then(resp => { 
-               const listaCurso = this.getListaAtualizada(curso, false) 
-               this.setState({ curso: initialState.curso, listaCurso })
+               const lista = this.getListaAtualizada(curso, false) 
+               this.setState({ curso: initialState.curso, lista })
               })
               }
              }
