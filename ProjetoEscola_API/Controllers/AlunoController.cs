@@ -10,7 +10,7 @@ namespace ProjetoEscola_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoController : Controller
+    public class AlunoController : ControllerBase
     {
         private readonly EscolaContext _context;
 
