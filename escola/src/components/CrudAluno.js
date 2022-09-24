@@ -95,6 +95,8 @@ export default class CrudAluno extends Component {
                 className="form-input"
                 name="ra" 
                 value={this.state.aluno.ra} 
+                required
+                maxLength={5}
                 onChange={ e => this.atualizaCampo(e)}
                  />
 
@@ -104,7 +106,9 @@ export default class CrudAluno extends Component {
               placeholder="Seu nome"
               className="form-input"
               name="nome"
-              value={this.state.aluno.nome} 
+              value={this.state.aluno.nome}
+              required
+              maxLength={30} 
               onChange={ e => this.atualizaCampo(e)} 
               />
 
@@ -115,6 +119,8 @@ export default class CrudAluno extends Component {
               className="form-input" 
               name="codCurso"
               value={this.state.aluno.codCurso}
+              required
+              maxLength={2}
               onChange={ e => this.atualizaCampo(e)}
                /> 
 

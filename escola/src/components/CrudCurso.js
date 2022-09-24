@@ -96,7 +96,9 @@ export default class CrudCurso extends Component {
                    placeholder="0"
                    className="form-input"
                    name="codCurso" 
-                   value={this.state.curso.codCurso} 
+                   value={this.state.curso.codCurso}
+                   required
+                   maxLength={2} 
                    onChange={ e => this.atualizaCampo(e)}
                     />
 
@@ -107,6 +109,8 @@ export default class CrudCurso extends Component {
               className="form-input"
               name="nomeCurso"
               value={this.state.curso.nomeCurso} 
+              required
+              maxLength={30}
               onChange={ e => this.atualizaCampo(e)} 
               />
 
@@ -117,6 +121,8 @@ export default class CrudCurso extends Component {
               className="form-input" 
               name="periodoCurso"
               value={this.state.curso.periodo}
+              required
+              maxLength={1}
               onChange={ e => this.atualizaCampo(e)}
                /> 
 
