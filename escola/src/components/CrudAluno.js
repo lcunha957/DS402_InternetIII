@@ -101,7 +101,7 @@ export default class CrudAluno extends Component {
             <label> Nome: </label>
              <input type="text"
               id="nome"
-              placeholder="Nome do aluno"
+              placeholder="Seu nome"
               className="form-input"
               name="nome"
               value={this.state.aluno.nome} 
