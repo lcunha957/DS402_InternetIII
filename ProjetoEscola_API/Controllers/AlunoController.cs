@@ -47,9 +47,26 @@ namespace ProjetoEscola_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult post(Aluno model)
+        public async Task<ActionResult> post(Aluno model)
         {
-            return Ok();
+            try
+            {
+                _context.Aluno.Add(model);
+                if (await _context.SaveChangesAsync() == 1)
+                {
+                    //return Ok();
+                    return Created($"/api/aluno/{model.ra}", model);
+                }
+            }
+            catch
+            {
+                return this.StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Falha no acesso ao banco de dados."
+                );
+            }
+            // retorna BadRequest se não conseguiu incluir
+            return BadRequest();
         }
 
         [HttpPut("{AlunoRA}")]
