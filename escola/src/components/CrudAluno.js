@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import "./CrudAluno.css";
 
-import Main from "../template/Main";
+import Main from "./template/Main";
 
 const title = "Cadastro de Alunos";
 
