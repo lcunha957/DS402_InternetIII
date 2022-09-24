@@ -1,51 +1,181 @@
 import React, { Component } from "react";
 
+import axios from 'axios';
+
 import "./CrudCurso.css";
 
 import Main from "../template/Main";
 
 const title = "Cadastro de Cursos";
 
-const Cursos = [
+const urlAPI="http://localhost:5277/api/aluno";
+
+const initialState = {
+  curso:{id: 0, codCurso: 0, nomeCurso: '', periodo:''},
+  listaCurso:[]
+}
+
+/*const Cursos = [
   { id: 1, codCurso:16, nomeCurso: "Alimentos", período: "matutino" },
   { id: 2, codCurso:19, nomeCurso: "Informática", período: "matutino" },
   { id: 3, codCurso:39, nomeCurso: "Desenvolvimento de Sistemas", período: "vespertino" },
   { id: 4, codCurso:59, nomeCurso: "Desenvolvimento de Sistemas", período: "noturno" },
   
-];
+];*/
 
 export default class CrudCurso extends Component {
-  renderTable() {
-    return (
-      <div className="listagemCursos">
-        <table className="listaCurso" id="tblListaCursos">
-          <thead>
-            <tr className="cabecTabelaCurso">
-              <th className="tabTitulocodCurso">Código </th>
-              <th className="tabTituloNomeCurso">Nome</th>
-              <th className="tabTituloPeríodo">Período</th>
-            </tr>
-          </thead>
 
-          <tbody>
-          {Cursos.map( 
+  state={ ...initialState }
+
+  componentDidMount() {
+    axios(urlAPI).then(resp => {
+      this.setState ({ listaCurso: resp.data })
+    })
+   }
+
+   limpar() {
+    this.setState({ curso: initialState.curso }); 
+   }
+ 
+   salvar() { 
+
+    const curso = this.state.curso; 
+    curso.codCurso = Number(curso.codCurso); 
+    const metodo = curso.id ? 'put' : 'post'; 
+    const url = curso.id ? `${urlAPI}/${curso.id}` : urlAPI;
+    
+    axios[metodo](urlAPI, curso) 
+    .then(resp => {
+       const listaCurso = this.getListaAtualizada(resp.data)
+       this.setState({ curso: initialState.curso, listaCurso }) 
+      }) 
+    }
+
+    getListaAtualizada(curso,add = true) {
+      const listaCurso = this.state.listaCurso.filter(c => c.id !== curso.id);
+      if (add) listaCurso.unshift(curso); 
+       return listaCurso;
+      }
+
+      atualizaCampo(event) { 
+        //clonar usuário a partir do state, para não alterar o state diretamente
+         const curso = { ...this.state.curso }; 
+         //usar o atributo NAME do input identificar o campo a ser atualizado 
+         curso[event.target.name] = event.target.value;
+          //atualizar o state 
+          this.setState({ curso }); 
+        }
+
+
+        carregar(curso) {
+          this.setState({ curso }) 
+         }
+
+         remover(curso) {
+          const url = urlAPI + "/" + curso.id;
+           if (window.confirm("Confirma remoção do curso: " + curso.codCurso)) { 
+             console.log("entrou no confirm");
+             
+             axios['delete'](url, curso) 
+             .then(resp => { 
+               const listaCurso = this.getListaAtualizada(curso, false) 
+               this.setState({ curso: initialState.curso, listaCurso })
+              })
+              }
+             }
+
+
+             renderForm() {
+              return (
+                <div className="inclui-container">
+   
+                  <label> CodCurso: </label> 
+                  <input 
+                  type="number"
+                   id="codCurso" 
+                   placeholder="0"
+                   className="form-input"
+                   name="codCurso" 
+                   value={this.state.curso.codCurso} 
+                   onChange={ e => this.atualizaCampo(e)}
+                    />
+
+<label> Nome do Curso: </label>
+             <input type="text"
+              id="nomeCurso"
+              placeholder="Nome do curso"
+              className="form-input"
+              name="nomeCurso"
+              value={this.state.curso.nomeCurso} 
+              onChange={ e => this.atualizaCampo(e)} 
+              />
+
+<label> Período: </label> 
+              <input type="text"
+              id="periodoCurso" 
+              placeholder="M, V ou N"
+              className="form-input" 
+              name="periodoCurso"
+              value={this.state.aluno.periodo}
+              onChange={ e => this.atualizaCampo(e)}
+               /> 
+
+<button className="btnSalvar"
+                onClick={e => this.salvar(e)} >
+                   Salvar
+                    </button> 
+                    <button className="btnCancelar" 
+                    onClick={e => this.limpar(e)} > 
+                    Cancelar 
+                    </button>
+                     </div> 
+                     ) 
+                    }
+
+
+                    renderTable() {
+                      return (
+                        <div className="listagem">
+                          <table className="listaCursos" id="tblListaCursos">
+                            <thead>
+                              <tr className="cabecTabelaCurso">
+                                <th className="tabTituloCodCurso">Codigo</th>
+                                <th className="tabTituloNomeCurso">Nome</th>
+                                <th className="tabTituloPeriodoCurso">Período</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+          {this.state.listaCurso.map( 
                       (curso) =>
                        <tr key={curso.id}>
                         <td>{curso.codCurso}</td>
                         <td>{curso.nomeCurso}</td>
-                        <td>{curso.período}</td>
+                        <td>{curso.periodo}</td>
+                        <td> 
+                        <button  className = "btnAlteraCurso" onClick={() => this.carregar(curso)} >
+                             Altera
+                              </button> 
+                              </td> 
+                              <td> 
+                                <button className="btnRemoveCurso" onClick={() => this.remover(curso)} >
+                                   Remove 
+                                   </button>
+                                    </td>
                          </tr>
           )}
-          </tbody>
+
+</tbody>
         </table>
       </div>
     );
   }
 
   render() { 
-            return (
-                <Main title={title}> 
-                {this.renderTable()} 
-                </Main> )
+    return (
+        <Main title={title}> 
+        {this.renderForm()}
+        {this.renderTable()} 
+        </Main> )
 }
 }

@@ -52,7 +52,7 @@ namespace ProjetoEscola_API.Controllers
             try
             {
                 _context.Aluno.Add(model);
-                if (await _context.SaveChangesAsync() == 1)
+                if ((await _context.SaveChangesAsync() == 1))
                 {
                     //return Ok();
                     return Created($"/api/aluno/{model.ra}", model);

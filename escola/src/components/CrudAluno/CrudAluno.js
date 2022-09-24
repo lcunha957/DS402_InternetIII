@@ -12,7 +12,7 @@ const urlAPI="http://localhost:5277/api/aluno";
 
 const initialState= { 
   aluno:{ id: 0,  ra: '', nome:' ', codCurso: 0},
-  lista:[]
+  listaAluno:[]
 }
 /*
 const Alunos = [
@@ -28,7 +28,7 @@ export default class CrudAluno extends Component {
 
  componentDidMount() {
   axios(urlAPI).then(resp => {
-    this.setState ({ lista: resp.data })
+    this.setState ({ listaAluno: resp.data })
   })
  }
 
@@ -45,15 +45,15 @@ export default class CrudAluno extends Component {
     
     axios[metodo](urlAPI, aluno) 
     .then(resp => {
-       const lista = this.getListaAtualizada(resp.data)
-       this.setState({ aluno: initialState.aluno, lista }) 
+       const listaAluno = this.getListaAtualizada(resp.data)
+       this.setState({ aluno: initialState.aluno, listaAluno }) 
       }) 
     }
 
     getListaAtualizada(aluno,add = true) {
-       const lista = this.state.lista.filter(a => a.id !== aluno.id);
-       if (add) lista.unshift(aluno); 
-        return lista;
+       const listaAluno = this.state.listaAluno.filter(a => a.id !== aluno.id);
+       if (add) listaAluno.unshift(aluno); 
+        return listaAluno;
        }
 
        atualizaCampo(event) { 
@@ -77,8 +77,8 @@ export default class CrudAluno extends Component {
               
               axios['delete'](url, aluno) 
               .then(resp => { 
-                const lista = this.getListaAtualizada(aluno, false) 
-                this.setState({ aluno: initialState.aluno, lista })
+                const listaAluno = this.getListaAtualizada(aluno, false) 
+                this.setState({ aluno: initialState.aluno, listaAluno })
                })
                }
               }
@@ -143,18 +143,19 @@ export default class CrudAluno extends Component {
           </thead>
 
           <tbody>
-          {this.state.lista.map( 
+          {this.state.listaAluno.map( 
                       (aluno) =>
                        <tr key={aluno.id}>
                         <td>{aluno.ra}</td>
                         <td>{aluno.nome}</td>
                         <td>{aluno.codCurso}</td>
                         <td> 
-                          <button onClick={() => this.carregar(aluno)} >
+                          <button  className = "btnAltera" onClick={() => this.carregar(aluno)} >
                              Altera
                               </button> 
-                              </td> <td> 
-                                <button onClick={() => this.remover(aluno)} >
+                              </td> 
+                              <td> 
+                                <button className = "btnRemove" onClick={() => this.remover(aluno)} >
                                    Remove 
                                    </button>
                                     </td>
