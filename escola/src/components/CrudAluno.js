@@ -103,7 +103,7 @@ export default class CrudAluno extends Component {
             <label> Nome: </label>
              <input type="text"
               id="nome"
-              placeholder="Seu nome"
+              placeholder="Nome"
               className="form-input"
               name="nome"
               value={this.state.aluno.nome}
