@@ -66,7 +66,7 @@ export default class CrudAluno extends Component {
         }
 
         carregar(aluno) {
-           this.setState({ aluno }) 
+                     this.setState({ aluno }) 
           }
 
 
