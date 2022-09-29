@@ -111,7 +111,7 @@ axios[metodo](urlAPI, cadastroaluno)
               <label> Código do Curso: </label> 
           <select name= "id_codCurso" id= "id_codCurso">
           <option value=""> Escolha o código do curso</option>
-          
+          const selecao  = conexao.result1;
           </select> 
           
           </div>
