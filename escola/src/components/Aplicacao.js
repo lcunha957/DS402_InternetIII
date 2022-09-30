@@ -3,6 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sql = require('mssql');
 
+const aplicacao = express;
+
+aplicacao.use(express.json());
+
 const connection = sql.createPool({
     server: "regulus.cotuca.unicamp.br",
     port: 1433,
@@ -22,11 +26,13 @@ const connection = sql.createPool({
 }) 
  
 
-const app = express();
 // eslint-disable-next-line no-unused-expressions
+aplicacao.listen(3000, () => {
+    console.log('Vai no navegador e coloque: http://localhost:3000');
+})
 
 
-app.get('/codigosCursos', function(req, res){
+aplicacao.get('/codigosCursos', function(req, res){
     // eslint-disable-next-line no-unused-expressions
     async () =>{
         try{
@@ -45,6 +51,4 @@ app.get('/codigosCursos', function(req, res){
 
 });
 
-app.listen(3000, () => {
-    console.log('Vai no navegador e coloque: http://localhost:3000');
-})
+
