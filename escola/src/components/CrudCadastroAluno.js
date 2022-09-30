@@ -12,11 +12,11 @@ import Servidor from "./Servidor"
 
 const title = "Cadastro de Alunos";
 
-const urlAPI="http://localhost:5277/api/aluno";
+const urlAPI="http://localhost:5277/api/cadastroAluno";
 
 const sql = require("mssql"); 
 
-const resultado1 = Servidor.resutl1;
+const resultado1 = Servidor.router1.resultadoDaRota1;
 
 const initialState= { 
     cadastroaluno:{ id: 0,  ra: '', nomeAluno:' ', al_codCurso: 0, al_nomeCurso: ''},

@@ -12,12 +12,12 @@ namespace ProjetoEscola_API.Models{
         [StringLength(5)]
         public string? ra { get; set; }
         [Required]
-        [StringLength(50)]
+        [StringLength(30)]
         public string? nomeAluno { get; set; }
         [Required]
         public int al_codCurso { get; set; }
         [Required]
-        [StringLength(20)]
+        [StringLength(30)]
         public string? al_nomeCurso { get; set; }
  }
 

@@ -19,7 +19,8 @@ export default function Rotas() {
         }
       />
 
-      <Route path='/alunos' element={<CrudCadastroAluno/>} />
+      <Route path='/CadastrarAluno' element={<CrudCadastroAluno/>} />
+      <Route path='/alunos' element={<CrudAluno/>} />
       
       <Route path='/cursos' element={<CrudCurso />} />
 

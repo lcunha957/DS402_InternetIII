@@ -1,52 +1,82 @@
 // instalar a biblioteca https://www.npmjs.com/package/mssql npm install mssql
 
 
-var express = require('express');
-var aplicacao = express();
+const express = require('express');
+const aplicacao = express();
 
-aplicacao.get('/codigoCursos', function (req, res) {
-   
-    var sql = require("mssql");
+const bodyParser = require('body-parser');
+const port = 3000;
+const connStr = "Server=regulus.cotuca.unicamp.br; Database=bd21106; User ID=BD21106; Password=BD21106";
 
-    // config for your database
-    var config = {
-        user: 'bd21106',
-        password: 'BD21106',
-        server: 'regulus.cotuca.unicamp.br', 
-        database: 'BD21106' 
-    };
+const sql = require("mssql");
 
-    // connect to your database
-    sql.connect(config, function (err) {
-    
-        if (err) console.log("Erro de conexao:" + err);
+sql.connect(connStr)
+.then(conn => 
+    global.conn = conn,
+     console.log(" A conexão com o banco de dados foi feita com sucesso!"))
+.catch(err=> console.log("erro! " + err));
 
-        // create Request object
-        var request = new sql.Request();
-        // query to the database and get the records
-         const result1 = request.query('select codCurso from Curso where codCurso = ? order by id ', function (err1, recordset1) {
-            
-            if (err1) console.log("Erro na seleção de codigos de curso" +err1)
 
-            // send records as a response
-            res.send(recordset1);
-            
-        });
-         
-         const result2 = request.query('select nomeCurso from Curso where nomeCurso = ? order by id', function(err2, recordset2){
-           if (err2) console.log("Erro na seleção dos nomes de curso" + err2)
-           
-           res.send(recordset2);  
-         });
-    }).then(() => {
-        console.log("Conexão com o SQL server realizada com sucesso!");
-    }).catch((erro) => {
-        console.log("Verifique a conexão com o SQL Server, apresentou o erro: " +erro);
-    });
+aplicacao.use(bodyParser.urlencoded({ extended: true }));
+aplicacao.use(bodyParser.json());
+
+
+const router = express.Router();
+router.get('/', (req,res) => console.log(res.json({ message: 'Funcionando!' })));
+aplicacao.use('/', router);
+
+aplicacao.listen(port);
+console.log('Servidor funcionando com APi na porta: ' + port);
+
+
+function execSQLQuery(sqlQry, res){
+    global.conn.request()
+    .query(sqlQry)
+    .then(result => res.json(result.recordset))
+    .catch(err => res.json(err));
+}
+
+ const router1 = router.get('/nomeCurso', (req,res) => {
+ let resultadoDaRota1 = execSQLQuery('Select nomeCurso from Curso order by codCurso' , res)
+})
+
+
+ const router2 = router.get('/nomeCurso/:codCurso?', (req,res) =>{
+    let filter = '';
+    if(req.params.id) filter = 'Where codCurso=' + parseInt(req.params.id);
+    let resultadoDaRota2 = execSQLQuery('Select nomeCurso from Curso' + filter + 'order by codCurso', res)
 });
 
-var servidor = aplicacao.listen(3000, function () {
-    console.log('Server is running..');
-});
+ const router3 = router.get('/CadastrarAluno', (req,res) =>{
+    let resultadoDaRota3 =execSQLQuery('Select * from CadastroAluno', res);
+})
 
+ const router4 = router.get('/CadastrarAluno/:id?', (req,res) =>{
+    let filter = '';
+    if(req.params.id) filter = 'Where ID = ' + parseInt(req.params.id);
+let resultadoDaRota4 = execSQLQuery('Select * from CadastroAluno' + filter, res);
+})
 
+const router5 = router.delete('/CadastrarAluno/:id', (req,res) =>{
+    let resultadoDaRota5 = execSQLQuery('Delete CadastroAluno where ID=' + parseInt(req.params.id), res);
+})
+
+const router6 = router.post('/CadastrarAluno', (req,res) =>{
+    const id = parseInt(req.body.id);
+    const ra = req.body.ra.substring(0,5);
+    const nomeAluno = req.body.nomeAluno.substring(0,30);
+    const al_codCurso = parseInt(req.body.al_codCurso);
+    const al_nomeCurso = req.body.al_nomeCurso.substring(0,30);
+    let resultadoDaRota6 = execSQLQuery(`Insert Into CadastroAluno(ID,RA, NOMEALUNO, AL_CODCURSO, AL_NOMECURSO) values(${id}, '${ra}',
+    '${nomeAluno}', ${al_codCurso}, '${al_nomeCurso}')`, res)
+})
+
+// para atualizar a tabela CadastroAluno
+ const router7 = router.patch('/CadastrarAluno/:id', (req,res) =>{
+    const id = parseInt(req.body.id);
+    const ra = req.body.ra.substring(0,5);
+    const nomeAluno = req.body.nomeAluno.substring(0,30);
+    const al_nomeCurso = req.body.al_nomeCurso.substring(0,30);
+let resultadoDaRota7 = execSQLQuery(`UPDATE CadastroAluno SET NOMEALUNO ='${nomeAluno}', AL_NOMECURSO='${al_nomeCurso}'  
+    WHERE ID=${id} and RA='${ra}')`, res)
+})
