@@ -8,15 +8,15 @@ import "./CrudCadastroAluno.css";
 
 import Main from "./template/Main";
 
-import conexao from "./Conexao"
+import Servidor from "./Servidor"
 
 const title = "Cadastro de Alunos";
 
 const urlAPI="http://localhost:5277/api/aluno";
 
-const selecaoCodCurso = conexao.result1.results['id'];
-const rows_selecaoCodCurso = conexao.result1.fields;
+const sql = require("mssql"); 
 
+const resultado1 = Servidor.resutl1;
 
 const initialState= { 
     cadastroaluno:{ id: 0,  ra: '', nomeAluno:' ', al_codCurso: 0, al_nomeCurso: ''},
@@ -118,7 +118,7 @@ axios[metodo](urlAPI, cadastroaluno)
           <select name="id_codCurso" id="id_codCurso" type= "number"
           className="form-input">
          <option value=""> Escolha o código do curso</option>
-       <option value={selecaoCodCurso['id']}></option>
+       <option value={resultado1['id']}></option>
       let valor = select.option[select.selectIndex].value;
        let value = {this.state.cadastroaluno.al_codCurso['valor']};
     onChange  = {e => this.atualizaCampo(e)}
