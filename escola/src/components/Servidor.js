@@ -45,7 +45,7 @@ aplicacao.get('/codigoCursos', function (req, res) {
     });
 });
 
-var server = aplicacao.listen(3000, function () {
+var servidor = aplicacao.listen(3000, function () {
     console.log('Server is running..');
 });
 
