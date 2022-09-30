@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjetoEscola_API.Data;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 //Allow CORS
