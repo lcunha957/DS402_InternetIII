@@ -114,13 +114,13 @@ axios[metodo](urlAPI, cadastroaluno)
               />
               
               
-          <label> Código do Curso: </label> 
-          <select name="id_codCurso" id="id_codCurso" type= "number"
+          <label> Nome do curso: </label> 
+          <select name="aluno_nomeCurso" id="aluno_nomeCurso" type= "number"
           className="form-input">
-         <option value=""> Escolha o código do curso</option>
-       <option value={resultado1['id']}></option>
+         <option value=""> Escolha o nome do curso</option>
+       <option value={resultado1['al_codCurso']}></option>
       let valor = select.option[select.selectIndex].value;
-       let value = {this.state.cadastroaluno.al_codCurso['valor']};
+       let value = {this.state.cadastroaluno.al_nomeCurso['valor']};
     onChange  = {e => this.atualizaCampo(e)}
           
           </select> 
