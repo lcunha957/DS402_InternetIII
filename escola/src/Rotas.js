@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import Main from './components/template/Main';
-//import CrudAluno from './components/CrudAluno';
+import CrudAluno from './components/CrudAluno';
 import CrudCurso from './components/CrudCurso';
 import CrudCadastroAluno from './components/CrudCadastroAluno'
 
