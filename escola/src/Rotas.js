@@ -20,7 +20,7 @@ export default function Rotas() {
       />
 
       <Route path='/CadastrarAluno' element={<CrudCadastroAluno/>} />
-      <Route path='/alunos' element={<CrudAluno/>} />
+      //<Route path='/alunos' element={<CrudAluno/>} />
       
       <Route path='/cursos' element={<CrudCurso />} />
 

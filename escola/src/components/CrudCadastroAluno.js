@@ -8,15 +8,15 @@ import "./CrudCadastroAluno.css";
 
 import Main from "./template/Main";
 
-import Servidor from "./Servidor"
+//import Servidor from "./Servidor"
 
 const title = "Cadastro de Alunos";
 
-const urlAPI="http://localhost:5277/api/cadastroAluno";
+const urlAPI="http://localhost:5277/api/aluno";
 
-const sql = require("mssql"); 
+//const sql = require("mssql"); 
 
-const resultado1 = Servidor.router1.resultadoDaRota1;
+//const resultado1 = Servidor.router1.resultadoDaRota1;
 
 const initialState= { 
     cadastroaluno:{ id: 0,  ra: '', nomeAluno:' ', al_codCurso: 0, al_nomeCurso: ''},
