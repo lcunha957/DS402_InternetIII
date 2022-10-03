@@ -97,12 +97,22 @@ const url = urlAPIAluno + "/" + alunos.id;
 if (window.confirm("Confirma remoção do aluno: " + alunos.ra)) { 
 console.log("entrou na confirmação de remover o aluno");
 axios["delete"](url, alunos).then(resp => { 
-  console.log(this);
 const listaDeAluno = this.getListaDeAlunoAtualizada(alunos, false) 
 this.setState({ alunos: initialState.alunos, listaDeAluno })
 })
 }
 }
+
+capturaOpcao() {
+  var select = document.getElementById('roldecursos');
+  var option = select.options[select.selectedIndex];
+
+  document.getElementById('rolDeOpcoes').value = option.value;
+  document.getElementsByName(ConfiguracaoDeCursos.cursos.nomeCurso).value = option.text;
+
+  this.atualizaCampo();
+}
+
 
 
 
@@ -120,10 +130,10 @@ defaultValue={this.state.alunos.ra} onChange={ e => this.atualizaCampo(e)}/>
 defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)}/> 
  
 <label> Informações sobre o Curso: </label> 
-<select className="seletor" onChange={(e)=> this.atualizaCampo(e)}>
+<select className="seletor" id="roldecursos" onChange={e => this.capturaOpcao(e)}>
 <option value={"selecionar"}> Selecione um curso </option>
 {this.state.listaDeCurso.map((cursos) => (
-<option key={cursos.id} value={this.state.alunos.al_codCurso} name="infoCurso">
+<option key={cursos.id}  id="roldeopcoes" value={this.state.alunos.al_codCurso} name="infoCurso">
 {cursos.nomeCurso}</option>))}</select>
                
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
