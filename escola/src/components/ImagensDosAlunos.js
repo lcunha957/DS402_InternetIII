@@ -15,12 +15,12 @@ function ImagensAlunos(){
         {id:"8", url:"https://cdn.pixabay.com/photo/2021/01/05/05/30/grapes-5889697_960_720.jpg"},
     
     ];
-const renderImagem = (itemData, index) => {
-     <img key={index} src={itemData.url[id]} id={itemData.id}></img>    
+const renderImagem =  (itemData, index) => {
+     <img key={index} src={itemData.url} id={itemData.id}></img>    
     
 }
 
-return renderImagem; 
+return <div className="raposa">{itemData.map(renderImagem)}</div>;
     
     }
 
