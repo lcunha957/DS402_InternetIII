@@ -6,11 +6,13 @@ import Main from "./template/Main";
 
 import "./Carometro.css";
 
+import bootstrap from 'bootstrap';
+
 import ImagensDosAlunos from "./ImagensDosAlunos";
 
 const title = "Portfólio das turmas";
 
-import bootstrap from 'bootstrap';
+
 
 const urlAPIEstudante="http://localhost:5277/api/cadastroaluno";
 const urlAPICurso="http://localhost:5277/api/curso";
@@ -28,7 +30,7 @@ const initialState= {
         const Selecao=()=>{
           const cursos = Curso.cursos.codCurso;
           const estCodCurso = initialState.estudantes.al_codCurso;
-          if(cursos == estCodCurso){
+          if(cursos === estCodCurso){
             const listaDeCurso = this.state.listaDeCurso.filter(a => a.id !== cursos.id);
             listaDeCurso.unshift(cursos);
             return listaDeCurso;
@@ -56,14 +58,17 @@ componentDidMount() {
         }
 
     render(){
-    <select className="seletorCurso" name="infoCurso" onClick={Selecao()}
-    onChange={event => this.handleCodCursoChange(event)} >
-        <option value={"selecionar"}> Selecione um curso </option>
-    {this.state.listaDeCurso.map((cursos) => (
-     <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
-{cursos.nomeCurso}</option>))}
-    </select>
-
+        return(
+            <select className="seletorCurso" name="infoCurso" onClick={Selecao()}
+            onChange={event => this.handleCodCursoChange(event)} >
+                <option value={"selecionar"}> Selecione um curso </option>
+            {this.state.listaDeCurso.map((cursos) => (
+             <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
+        {cursos.nomeCurso}</option>))}
+            </select>
+        
+        )
+    
     }
     
   
