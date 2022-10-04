@@ -29,11 +29,10 @@ const initialState= {
         listaDeCurso:[],
         };
         
-        const estadoZero = {
-            imagens: {id:"", url:""},
-            listaImg:[],
-        };
-           
+       
+      const figuras={
+        imagens:[],
+      }     
 
           
            
@@ -51,7 +50,8 @@ componentDidMount() {
     })
 
     axios(urlAPIGatinhos).then(resp =>{
-        this.setState({listaImg: resp.data})   
+        this.setState({imagens: resp.data})
+        console.log({imagens: resp.data})
         })
     }
 
@@ -70,11 +70,14 @@ componentDidMount() {
         }
 
 
-       
-            
+        
+   
         
 
     renderTable(){
+
+       const listaImg = this.state.figuras.imagens;
+       console.log("Vamos ver a lista de imagens abaixo:" + listaImg);
         return(
             <div class="container" className= "leao">
             
@@ -95,14 +98,11 @@ componentDidMount() {
             <div class="col-md-2">
             {this.state.listaDeEstudante.map((estudantes) => 
             <Card key={estudantes.id} className="pantera">
-                {this.state.listaImg.map((imagens) =>
-                <Card.Img className="uirapuru" key={imagens.id} src={imagens.url}></Card.Img>
-                )}
-                <Card.Body className="lontra">
+               <Card.Body className="lontra">
                 <Card.Title className="chafariz"> RA: {estudantes.ra} </Card.Title>
                 <Card.Subtitle className="ornitorrinco"> Nome do Aluno: {estudantes.nomeAluno}</Card.Subtitle>
                 <Card.Text className="zebra"> Código do Curso: {estudantes.al_codCurso}</Card.Text>
-                <Card.Text className="albatroz"> Matriculado(a) em: {Curso.cursos.nomeCurso(estudantes.al_codCurso)} </Card.Text>
+                           
                 </Card.Body>
                 </Card>
             )}
@@ -124,4 +124,5 @@ componentDidMount() {
         </Main> )
   
 }
+
 }
