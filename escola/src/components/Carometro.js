@@ -85,6 +85,7 @@ componentDidMount() {
              <>
              <Card key={estudantes.id} className="pantera">
                 <CardBody className="lontra">
+                    <ImagensDosAlunos/>
                 <CardTitle className="chafariz"> RA: {estudantes.ra}</CardTitle>
                     <CardSubtitle className="ornitorrinco"> Nome do aluno: {estudantes.nomeAluno}</CardSubtitle>
                     <CardText className="zebra"> Código do curso: {estudantes.al_codCurso}</CardText>
