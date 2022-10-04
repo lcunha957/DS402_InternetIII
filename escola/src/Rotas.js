@@ -9,6 +9,7 @@ import CrudCadastroAluno from './components/CrudCadastroAluno';
 
 import CrudCurso from './components/CrudCurso';
 
+import Carometro from './components/Carometro';
 
 
 
@@ -29,6 +30,8 @@ export default function Rotas() {
       <Route path='/alunos' element={<CrudCadastroAluno/>} />
 
       <Route path='/cursos' element={<CrudCurso />} />
+
+      <Route path='/carometro' element={<Carometro/>} />
 
       <Route
         path='*'
