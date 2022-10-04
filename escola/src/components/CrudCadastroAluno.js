@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 
 import axios from 'axios';
@@ -107,8 +108,8 @@ capturaOpcao() {
   var select = document.getElementById('roldecursos');
   var option = select.options[select.selectedIndex];
 
-  document.getElementById('rolDeOpcoes').value = option.value;
-  document.getElementsByName(ConfiguracaoDeCursos.cursos.nomeCurso).value = option.text;
+  document.getElementById('value').value = option.value;
+  document.getElementsById('text').value = option.text;
 
   this.atualizaCampo();
 }
@@ -135,6 +136,8 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
 {this.state.listaDeCurso.map((cursos) => (
 <option key={cursos.id}  id="roldeopcoes" value={this.state.alunos.al_codCurso} name="infoCurso">
 {cursos.nomeCurso}</option>))}</select>
+  <input type="text" id="value"></input>
+	<input type="text" id="text"></input>
                
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
@@ -171,3 +174,4 @@ render() {return (
 }
 }
                     
+
