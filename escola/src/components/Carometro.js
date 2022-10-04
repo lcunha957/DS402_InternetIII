@@ -8,6 +8,8 @@ import "./Carometro.css";
 
 import {Card,  CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 
+import ImagensDosAlunos from "./ImagensDosAlunos";
+
 import { redirect } from "react-router-dom";
 
 const title = "Portfólio das turmas";
@@ -82,6 +84,7 @@ componentDidMount() {
              <div>{this.state.listaDeEstudante.map((estudantes) => 
              <>
              <Card key={estudantes.id} className="pantera">
+                <ImagensDosAlunos/>
                 <CardBody className="lontra">
                     <CardTitle className="chafariz"> RA: {estudantes.ra}</CardTitle>
                     <CardSubtitle className="ornitorrinco"> Nome do aluno: {estudantes.nomeAluno}</CardSubtitle>
