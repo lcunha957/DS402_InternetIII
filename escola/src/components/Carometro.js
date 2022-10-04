@@ -10,7 +10,7 @@ import "./Carometro.css";
 import { redirect } from "react-router-dom";
 
 import Card from 'react-bootstrap/Card';
-import ImagensAlunos from "./ImagensDosAlunos";
+
 
 const title = "Portfólio das turmas";
 
