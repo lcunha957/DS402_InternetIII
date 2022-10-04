@@ -10,8 +10,6 @@ import {Card,  CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 
 import ImagensDosAlunos from "./ImagensDosAlunos";
 
-import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
-
 import { redirect } from "react-router-dom";
 
 const title = "Portfólio das turmas";
