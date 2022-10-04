@@ -16,8 +16,9 @@ import Carometro from './components/Carometro';
 export default function Rotas() {
   return (
     <Routes>
-      <Route exact path='/'element={<CrudAluno/>} component={CrudAluno}/>
 
+     <Route exact path="/" element={<CrudAluno/>} component={CrudAluno}/>
+     
      <Route path='/alunos' element={<CrudCadastroAluno/>} component={CrudCadastroAluno} />
 
       <Route path='/cursos' element={<CrudCurso />} component={CrudCurso} />

@@ -10,6 +10,10 @@ import bootstrap from 'bootstrap';
 
 import ImagensDosAlunos from "./ImagensDosAlunos";
 
+import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+
+import { redirect } from "react-router-dom";
+
 const title = "Portfólio das turmas";
 
 
@@ -27,16 +31,8 @@ const initialState= {
         listaDeCurso:[],
         }  
 
-        const Selecao=()=>{
-          const cursos = Curso.cursos.codCurso;
-          const estCodCurso = initialState.estudantes.al_codCurso;
-          if(cursos === estCodCurso){
-            const listaDeCurso = this.state.listaDeCurso.filter(a => a.id !== cursos.id);
-            listaDeCurso.unshift(cursos);
-            return listaDeCurso;
-          }
           
-        }     
+           
 export default class Carometro extends Component{
     state={ ...initialState, ...Curso }
 
@@ -55,18 +51,49 @@ componentDidMount() {
         const estudantes = { ...this.state.estudantes };
         estudantes.al_codCurso = Number(event.target.value);
         this.setState({ estudantes })
+
+        if((this.state.listaDeCurso.cursos.codCurso) > 0){
+          return Card;  
         }
 
-    render(){
+        else {
+         return redirect(urlAPICurso);   
+        }
+        }
+
+    renderTable(){
         return(
-            <select className="seletorCurso" name="infoCurso" onClick={Selecao()}
+            <>
+            
+        <th>
+            <tr>
+            <select className="seletorCurso" name="infoCurso"
             onChange={event => this.handleCodCursoChange(event)} >
                 <option value={"selecionar"}> Selecione um curso </option>
             {this.state.listaDeCurso.map((cursos) => (
              <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
         {cursos.nomeCurso}</option>))}
             </select>
-        
+            </tr>
+            <tr>
+            <p> Curso selecionado: {this.state.listaDeCurso.cursos.nomeCurso}</p>
+            </tr>
+            </th>
+            <th>
+             <div className="furacao">{this.state.listaDeEstudante.map((estudantes) => 
+             <Card key={estudantes.id}>
+                <ImagensDosAlunos/>
+                <CardBody className="lontra">
+                    <CardTitle className="chafariz">{estudantes.ra}</CardTitle>
+                    <CardText className="ornitorrinco">{estudantes.nomeAluno}</CardText>
+                    <CardText>{estudantes.al_codCurso}</CardText>
+                    <CardText>{this.state.listaDeCurso.cursos.nomeCurso}</CardText> 
+                </CardBody>
+             </Card>)}</div>   
+            </th>
+            </>
+            
+            
         )
     
     }

@@ -13,5 +13,7 @@ namespace ProjetoEscola_API.Data
         public DbSet<Curso> Curso { get; set; }
 
         public DbSet<CadastroAluno> CadastroAluno {  get;set; }
+
+        public DbSet<Carometro> Carometro { get;set; }
     }
 }
