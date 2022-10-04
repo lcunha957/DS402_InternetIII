@@ -61,6 +61,38 @@ componentDidMount() {
         }
         }
 
+
+        nomeDosCursos(){
+            const nomeDoCurso = this.state.listaDeCurso.cursos.nomeCurso;
+            const numerosCurso =[5,19,39,59,85];
+            const numCurso = this.state.listaDeEstudante.estudantes.al_codCurso;
+
+            if (numCurso === numerosCurso){
+                if(numerosCurso == 5){
+                    return nomeDoCurso == 'Confeitaria';
+                }
+                else if(numerosCurso== 19){
+                    return nomeDoCurso == 'Informatica';
+                }
+    
+                else if(numerosCurso == 39){
+                    return nomeDoCurso == 'Desenvolvimento para Internet';
+                }
+                else if(numerosCurso == 59){
+                    return nomeDoCurso == 'Desenvolvimento de Sistemas';
+                }
+                else if (numerosCurso == 85){
+                    return nomeDoCurso == 'Maquiagem profissional';
+                }     
+            }
+            
+            else{
+                return "Cadastre um novo curso conosco! Entre em: " + (urlAPICurso); 
+            }
+
+            
+        }
+
     renderTable(){
         return(
             <>
@@ -72,11 +104,8 @@ componentDidMount() {
                 <option value={"selecionar"}> Selecione um curso </option>
             {this.state.listaDeCurso.map((cursos) => (
              <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
-        {cursos.nomeCurso}</option>))}
-            </select>
-            </tr>
-            <tr>
-            <p> Curso selecionado: {this.state.listaDeCurso.cursos.nomeCurso}</p>
+         {cursos.codCurso} - {cursos.nomeCurso} </option>))}
+             </select>
             </tr>
             </th>
             <th>
@@ -87,7 +116,7 @@ componentDidMount() {
                     <CardTitle className="chafariz">{estudantes.ra}</CardTitle>
                     <CardText className="ornitorrinco">{estudantes.nomeAluno}</CardText>
                     <CardText>{estudantes.al_codCurso}</CardText>
-                    <CardText>{this.state.listaDeCurso.cursos.nomeCurso}</CardText> 
+                    <CardText>{this.nomeDosCursos}</CardText>
                 </CardBody>
              </Card>)}</div>   
             </th>
