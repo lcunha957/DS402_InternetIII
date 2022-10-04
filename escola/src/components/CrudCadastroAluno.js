@@ -18,10 +18,10 @@ const urlAPICurso = "http://localhost:5277/api/curso";
 const initialState= { 
 alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:""},
 listaDeAluno:[],
-};
+ };
 
 const ConfiguracaoDeCursos = {
-cursos:{id: 0, codCurso: 0, nomeCurso:"", periodo: ""},
+cursos:{id: 0, codCurso:"", nomeCurso:"", periodo: ""},
 listaDeCurso:[],
 }  
 
@@ -29,6 +29,7 @@ listaDeCurso:[],
 export default class CrudCadastroAluno extends Component {
 
 state={ ...initialState, ...ConfiguracaoDeCursos }
+
 
 componentDidMount() {
 axios(urlAPIAluno).then(resp => {
@@ -48,14 +49,16 @@ this.setState({ alunos: initialState.alunos });
       
 salvar() { 
 const alunos = this.state.alunos; 
+
 alunos.al_codCurso = Number(alunos.al_codCurso)
 const metodo = alunos.id ? 'put' : 'post'; 
 const url = alunos.id ? `${urlAPIAluno}/${alunos.id}` : urlAPIAluno;
 axios[metodo](url, alunos).then(resp => {
 const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
-this.setState({ alunos: initialState.alunos, listaDeAluno }) 
-}) 
-}
+  this.setState({ alunos: initialState.alunos, listaDeAluno }); 
+});}
+
+
 
 getListaDeAlunosAtualizada(alunos,add = true) {
 const listaDeAluno = this.state.listaDeAluno.filter(a => a.id !== alunos.id);
@@ -85,7 +88,7 @@ this.setState({ alunos });
 const url = urlAPIAluno + "/" + alunos.id;
 if (window.confirm("Confirma edição do aluno: " + alunos.ra)) {
 console.log("entrou na confirmação de editar o aluno");
-axios["put"](url, alunos).then((resp) => {
+axios['put'](url, alunos).then((resp) => {
 const listaDeAluno = this.getListaDeAlunosAtualizada(alunos, false);
 this.setState({ alunos: initialState.alunos, listaDeAluno });
 });
@@ -97,12 +100,19 @@ remover(alunos) {
 const url = urlAPIAluno + "/" + alunos.id;
 if (window.confirm("Confirma remoção do aluno: " + alunos.ra)) { 
 console.log("entrou na confirmação de remover o aluno");
-axios["delete"](url, alunos).then(resp => { 
+axios['delete'](url, alunos).then(resp => { 
 const listaDeAluno = this.getListaDeAlunoAtualizada(alunos, false) 
 this.setState({ alunos: initialState.alunos, listaDeAluno })
-})
+});
 }
 }
+
+
+handleCodCursoChange = (event) => {
+  const alunos = { ...this.state.alunos };
+  alunos.al_codCurso = Number(event.target.value);
+  this.setState({ alunos })
+  }
 
 
 
@@ -121,12 +131,12 @@ defaultValue={this.state.alunos.ra} onChange={ e => this.atualizaCampo(e)}/>
 defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)}/> 
  
 <label> Informações sobre o Curso: </label> 
-<select className="seletor" id="roldecursos" onChange={e => this.atualizaCampo(e)}>
+<select className="seletor" name="codigoCurso" onChange={event => this.handleCodCursoChange(event)}>
 <option value={"selecionar"}> Selecione um curso </option>
 {this.state.listaDeCurso.map((cursos) => (
-<option key={cursos.id}  id="roldeopcoes" value={this.state.alunos.al_codCurso} name="infoCurso">
-{cursos.nomeCurso}</option>))}</select>
-  
+<option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
+{cursos.nomeCurso}</option>))}
+</select>
                
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 

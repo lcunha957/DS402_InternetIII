@@ -8,21 +8,13 @@ namespace ProjetoEscola_API.Models{
  public class CadastroAluno{
 
         public int id { get; set; }
-        [Required]
-        [StringLength(5)]
+ 
         public string? ra { get; set; }
-        [Required]
-        [StringLength(30)]
+       
         public string? nomeAluno { get; set; }
-        [Required]
+       
         public int al_codCurso { get; set; }
-<<<<<<< HEAD
-      
-=======
-        [Required]
-        [StringLength(30)]
-        public string? al_nomeCurso { get; set; }
->>>>>>> 3e1e2997cd92438e35ef2a43995271fab074f7f5
+
  }
 
 }
@@ -55,5 +47,9 @@ create table CadastroAluno(
 [al_codCurso] INT,
 PRIMARY KEY CLUSTERED ([id] ASC),
 );
+
+alter table CadastroAluno 
+add constraint  fk_CadCodCurso
+foreign key (al_codCurso) references Curso (codCurso);
 
 */

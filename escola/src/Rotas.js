@@ -3,9 +3,12 @@ import { Routes, Route } from "react-router-dom";
 
 import Main from './components/template/Main';
 
+
 import CrudCadastroAluno from './components/CrudCadastroAluno';
 
+
 import CrudCurso from './components/CrudCurso';
+
 
 
 
