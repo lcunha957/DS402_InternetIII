@@ -6,7 +6,7 @@ import Main from "./template/Main";
 
 import "./Carometro.css";
 
-import bootstrap from 'bootstrap';
+import {Card,  CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 
 import ImagensDosAlunos from "./ImagensDosAlunos";
 
@@ -68,7 +68,7 @@ componentDidMount() {
 
     renderTable(){
         return(
-            <>
+            <div className= "leao">
             
         <th>
             <tr>
@@ -82,17 +82,17 @@ componentDidMount() {
             </tr>
             </th>
             <th>
-             <div className="furacao">{this.state.listaDeEstudante.map((estudantes) => 
+             <div>{this.state.listaDeEstudante.map((estudantes) => 
              <Card key={estudantes.id}>
-                <ImagensDosAlunos/>
+               <ImagensDosAlunos/>
                 <CardBody className="lontra">
-                    <CardTitle className="chafariz">{estudantes.ra}</CardTitle>
-                    <CardText className="ornitorrinco">{estudantes.nomeAluno}</CardText>
-                    <CardText>{estudantes.al_codCurso}</CardText>
+                    <CardTitle className="chafariz"> RA: {estudantes.ra}</CardTitle>
+                    <CardSubtitle className="ornitorrinco"> Nome do aluno: {estudantes.nomeAluno}</CardSubtitle>
+                    <CardText className="zebra"> Código do curso: {estudantes.al_codCurso}</CardText>
                 </CardBody>
              </Card>)}</div>   
             </th>
-            </>
+            </div>
             
             
         )

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 import axios from 'axios';
 
@@ -14,32 +14,34 @@ const imagens=[
     {id:"5", url:"https://cdn.pixabay.com/photo/2016/10/27/22/52/apples-1776744_960_720.jpg"},
     {id:"6", url:"https://cdn.pixabay.com/photo/2016/07/22/09/59/fruits-1534494_960_720.jpg"},
     {id:"7", url:"https://cdn.pixabay.com/photo/2015/07/10/18/36/still-life-840014_960_720.jpg"},
-    {id:"8", url:"https://cdn.pixabay.com/photo/2021/01/05/05/30/grapes-5889697_960_720.jpg"}
+    {id:"8", url:"https://cdn.pixabay.com/photo/2021/01/05/05/30/grapes-5889697_960_720.jpg"},
+  
 ];
 
-const [imagem, setImagem] = useState();
 
-const handleChangeImagem=(e) =>{
-    setImagem(e.targetValue);
-}
 
 
 
 export default class ImagePerfil extends Component {
     state = { ...imagens }
 
-  
-        render() {
+    componentDidMount() {
+        axios(imagens.url).then(resp => {
+        this.setState ({ lista: resp.data })
+        });
+    }
+        render()
+         {
         return (
             <div>
             {this.state.imagens.map(
                 (f, i) =>
-                <img  id = {f.id} src={f.url} className="arara"/>
+                <img  id = {f.id} src={f.url} className="arara" alt=""/>
             )}
           </div>
         )
     }
+
+
+
 }
-
-
-

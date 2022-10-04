@@ -1,0 +1,37 @@
+.seletorCurso{
+    border-radius: 20px;
+    color:blueviolet;
+    padding: 10px;
+    margin: 5px;
+    width: 250px;
+    font-family: Cambria;
+    
+}
+
+.lontra{
+ padding: 30px;
+ border-style: hidden;
+ width: 320px;
+ height: 200px;
+ background-color:rgb(253, 106, 136);
+
+}
+
+.chafariz{
+  padding: 10px;
+  color:darkmagenta;
+  font-size: 10px;   
+}
+
+.ornitorrinco{
+    padding: 10px;
+    color:rgb(14, 71, 141);   
+    font-size: 10px;
+  }
+
+  
+.zebra{
+    padding: 10px;
+    color:rgb(8, 87, 44);   
+    font-size: 10px;
+  }
