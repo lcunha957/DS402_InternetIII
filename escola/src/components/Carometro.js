@@ -8,7 +8,7 @@ import "./Carometro.css";
 
 import {Card,  CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 
-import ImagensDosAlunos from "./ImagensDosAlunos";
+import ImagensDosAlunos from "../components/ImagensDosAlunos";
 
 import { redirect } from "react-router-dom";
 
@@ -79,17 +79,20 @@ componentDidMount() {
              </select>
             </tr>
             </th>
+            <>
             <th>
              <div>{this.state.listaDeEstudante.map((estudantes) => 
-             <Card key={estudantes.id}>
-               <ImagensDosAlunos/>
+             <>
+             <Card key={estudantes.id} className="pantera">
                 <CardBody className="lontra">
-                    <CardTitle className="chafariz"> RA: {estudantes.ra}</CardTitle>
+                <CardTitle className="chafariz"> RA: {estudantes.ra}</CardTitle>
                     <CardSubtitle className="ornitorrinco"> Nome do aluno: {estudantes.nomeAluno}</CardSubtitle>
                     <CardText className="zebra"> Código do curso: {estudantes.al_codCurso}</CardText>
                 </CardBody>
-             </Card>)}</div>   
+             </Card><hr/></>
+             )}</div>   
             </th>
+            </>
             </div>
             
             

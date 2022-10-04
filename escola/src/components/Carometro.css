@@ -3,35 +3,46 @@
     color:blueviolet;
     padding: 10px;
     margin: 5px;
-    width: 250px;
+    width: 280px;
     font-family: Cambria;
+    font-size: 15px;
     
 }
 
+.pantera{
+    align-items: center;
+}
 .lontra{
  padding: 30px;
  border-style: hidden;
- width: 320px;
- height: 200px;
- background-color:rgb(253, 106, 136);
-
+ width: 360px;
+ height: 250px;
+ background-color:rgb(252, 147, 168);
+ 
 }
+
 
 .chafariz{
   padding: 10px;
   color:darkmagenta;
-  font-size: 10px;   
+  font-size: 20px;   
 }
 
 .ornitorrinco{
     padding: 10px;
     color:rgb(14, 71, 141);   
-    font-size: 10px;
+    font-size: 20px;
   }
 
   
 .zebra{
     padding: 10px;
     color:rgb(8, 87, 44);   
-    font-size: 10px;
+    font-size: 20px;
+  }
+
+
+  .hr{
+    color:rgb(255, 251, 251);
+    padding: 20px;
   }
