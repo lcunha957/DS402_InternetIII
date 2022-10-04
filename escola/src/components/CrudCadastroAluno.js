@@ -104,16 +104,6 @@ this.setState({ alunos: initialState.alunos, listaDeAluno })
 }
 }
 
-capturaOpcao() {
-  var select = document.getElementById('roldecursos');
-  var option = select.options[select.selectedIndex];
-
-  document.getElementById('value').value = option.value;
-  document.getElementsById('text').value = option.text;
-
-  this.atualizaCampo();
-}
-
 
 
 
@@ -131,13 +121,12 @@ defaultValue={this.state.alunos.ra} onChange={ e => this.atualizaCampo(e)}/>
 defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)}/> 
  
 <label> Informações sobre o Curso: </label> 
-<select className="seletor" id="roldecursos" onChange={e => this.capturaOpcao(e)}>
+<select className="seletor" id="roldecursos" onChange={e => this.atualizaCampo(e)}>
 <option value={"selecionar"}> Selecione um curso </option>
 {this.state.listaDeCurso.map((cursos) => (
 <option key={cursos.id}  id="roldeopcoes" value={this.state.alunos.al_codCurso} name="infoCurso">
 {cursos.nomeCurso}</option>))}</select>
-  <input type="text" id="value"></input>
-	<input type="text" id="text"></input>
+  
                
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
