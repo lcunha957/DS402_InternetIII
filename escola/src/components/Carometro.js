@@ -98,5 +98,10 @@ componentDidMount() {
     
     }
     
+    render() {return (
+        <Main title={title}> 
+        {this.renderTable()} 
+        </Main> )
   
+}
 }
