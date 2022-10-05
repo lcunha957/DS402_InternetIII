@@ -14,6 +14,6 @@ namespace ProjetoEscola_API.Data
 
         public DbSet<CadastroAluno> CadastroAluno {  get;set; }
 
-    
+            
     }
 }

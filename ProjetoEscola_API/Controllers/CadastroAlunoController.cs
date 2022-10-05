@@ -46,6 +46,32 @@ namespace ProjetoEscola_API.Controllers
                 );
             }
         }
+        /*
+        [HttpGet("{CadastroAlunoAlCodCurso}")]
+        public ActionResult<List<CadastroAluno>> Get( int CadastroAlunoAlCodCurso, CadastroAluno CadastroAlunoOri)
+        {
+            try
+            {
+                var result = await _context.CadastroAluno.FindAsync(CadastroAlunoAlCodCurso);
+                   if (CadastroAlunoAlCodCurso != result.id)
+                {
+                    return BadRequest();
+                }
+                result.ra = CadastroAlunoOri.ra;
+                result.nomeAluno = CadastroAlunoOri.nomeAluno;
+                result.al_codCurso = CadastroAlunoOri.al_codCurso;
+                result.image = CadastroAlunoOri.image;
+
+                return Created($"/api/cadastroaluno/{CadastroAlunoOri.ra}", CadastroAlunoOri);
+            }
+            catch
+            {
+                return this.StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Falha no acesso ao banco de dados."
+                );
+            }
+        }*/
 
         [HttpPost]
         public async Task<ActionResult> post(CadastroAluno model)

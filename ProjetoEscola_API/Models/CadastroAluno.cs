@@ -15,6 +15,8 @@ namespace ProjetoEscola_API.Models{
        
         public int al_codCurso { get; set; }
 
+       // public string? image { get;set; }
+
  }
 
 }
@@ -48,8 +50,20 @@ create table CadastroAluno(
 PRIMARY KEY CLUSTERED ([id] ASC),
 );
 
+TENTEI COLOCAR A COLUNA DE ALUNO, MAS: DÁ ERRO DE PUXAR A IMAGEM RANDÔMICA NA API CAT;
+PORTANTO, RETIREI A COLUNA DE IMAGEM.
+
 alter table CadastroAluno 
 add constraint  fk_CadCodCurso
 foreign key (al_codCurso) references Curso (codCurso);
+
+PRA RENDERIZAR A API CAT IMAGE
+alter table CadastroAluno 
+add [image] varchar(500)
+
+
+update CadastroAluno 
+set [image] = 'https://api.thecatapi.com/v1/images/search'
+where[image] = 'null'
 
 */
