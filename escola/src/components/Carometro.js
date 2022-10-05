@@ -6,9 +6,11 @@ import Main from "./template/Main";
 
 import "./Carometro.css";
 
-//import { redirect } from "react-router-dom";
-
 import Card from 'react-bootstrap/Card';
+
+import Col from 'react-bootstrap/Col';
+
+import Row from 'react-bootstrap/Row';
 
 import ImagensAlunos from "./ImagensAlunos";
 
@@ -35,7 +37,7 @@ const initialState= {
      
      
 export default class Carometro extends Component{
-    state={ ...initialState, ...Curso, /*...ImagemDeAluno*/ }
+    state={ ...initialState, ...Curso }
 
     
 componentDidMount() {
@@ -68,10 +70,9 @@ componentDidMount() {
             </tr>
             <button className="btnFiltrar"> Filtrar </button>
             </th>
-          
-          <th>
             
-           <div class= "Row">
+            <th>
+            <div class= "Row">
             <div class="col-md-2">
             {this.state.listaDeEstudante.map((estudantes) => 
             <>
@@ -89,14 +90,15 @@ componentDidMount() {
             </div>
             </div>
           </th>
-         
-           
-            </div>
-            
-            
-        )
     
-    }
+     </div>
+        )
+       }
+
+            
+        
+    
+    
     
     render() {return (
         <Main title={title}> 
@@ -105,6 +107,11 @@ componentDidMount() {
   
 }
 
+
+
+
+
+    
 
 
 }
@@ -251,6 +258,8 @@ var express = require('express');
          axios(urlAPIDeGatos).then(resp =>{
         this.setState({ listaDeFiguras: resp.data})
     });
+
+    state = {...ImagemDeAluno}
 
     handleCodCursoChange = (event) => {
         const estudantes = { ...this.state.estudantes };
