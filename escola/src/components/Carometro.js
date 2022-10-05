@@ -298,7 +298,8 @@ var express = require('express');
             
             })
         };
-        
+       O verbo get me retorna id=0 , e o código 404, pois não reconheceu o campo al_codCurso como um campo pertencente ao array de
+         Estudantes, proveniente da tabela CadastroAluno.
         */
         
                   
