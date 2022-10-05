@@ -37,7 +37,7 @@ const initialState= {
           
            
 export default class Carometro extends Component{
-    state={ ...initialState, ...Curso, ...estadoZero }
+    state={ ...initialState, ...Curso }
 
     
 componentDidMount() {
