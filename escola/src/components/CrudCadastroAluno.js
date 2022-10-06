@@ -9,14 +9,14 @@ import Main from "./template/Main";
 
 const title = "Cadastrando os Alunos";
 
-const urlAPIAluno="http://localhost:5277/api/cadastroaluno";
+const urlAPIAluno="http://localhost:5277/api/CadastroAluno";
 
 const urlAPICurso = "http://localhost:5277/api/curso";
 
 
 
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:""},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"",imagem:""},
 listaDeAluno:[],
  };
 

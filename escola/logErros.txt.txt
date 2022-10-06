@@ -1,0 +1,223 @@
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola> npm start
+
+> escola@0.1.0 start
+> react-scripts start
+
+
+There might be a problem with the project dependency tree.
+It is likely not a bug in Create React App, but something you need to fix locally.
+
+The react-scripts package provided by Create React App requires a dependency:
+
+  "webpack": "4.44.2"
+
+Don't try to install it manually: your package manager does it automatically.
+However, a different version of webpack was detected higher up in the tree:
+
+  C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\webpack (version: 5.74.0)
+
+Manually installing incompatible versions is known to cause hard-to-debug issues.
+
+If you would prefer to ignore this check, add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.
+That will permanently disable this message but you might encounter other issues.
+
+To fix the dependency tree, try following the steps below in the exact order:
+1. Delete package-lock.json (not package.json!) and/or yarn.lock in your project folder.
+  2. Delete node_modules in your project folder.
+  3. Remove "webpack" from dependencies and/or devDependencies in the package.json file in your project folder.
+  4. Run npm install or yarn, depending on the package manager you use.
+
+In most cases, this should be enough to fix the problem.
+If this has not helped, there are a few other things you can try:
+
+  5. If you used npm, install yarn (http://yarnpkg.com/) and repeat the above steps with it instead.
+     This may help because npm has known issues with package hoisting which may get resolved in future versions.
+
+  6. Check if C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\webpack is outside your project directory.
+     For example, you might have accidentally installed something in your home folder.
+
+  7. Try running npm ls webpack in your project folder.
+     This will tell you which other package (apart from the expected react-scripts) installed webpack.
+
+If nothing else helps, add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.
+That would permanently disable this preflight check in case you want to proceed anyway.
+
+P.S. We know this message is long but please read the steps above :-) We hope you find them helpful!
+
+
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola>
+
+---------------------------------------------
+
+******************Depois de reinstalar pra última versão do Node e do npm:*********************************
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\react-scripts\scripts\start.js:19
+  throw err;
+  ^
+
+TypeError: Cannot read properties of undefined (reading 'createSnapshot')
+    at C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\html-webpack-plugin\lib\webpack5\file-watcher-api.js:13:36
+    at new Promise (<anonymous>)
+    at Object.createSnapshot (C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\html-webpack-plugin\lib\webpack5\file-watcher-api.js:12:10)
+    at C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\html-webpack-plugin\lib\cached-child-compiler.js:219:35
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+
+Node.js v18.10.0
+
+
+*********************Ao instalar o WebPack 4.44.2 (npm i WebPack@4.44.2): *************************
+npm WARN ERESOLVE overriding peer dependency
+npm WARN While resolving: escola@0.1.0
+npm WARN Found: webpack@5.74.0
+npm WARN node_modules/webpack
+npm WARN   peer webpack@"4.x.x || 5.x.x" from @webpack-cli/configtest@1.2.0
+npm WARN   node_modules/@webpack-cli/configtest
+npm WARN     @webpack-cli/configtest@"^1.2.0" from webpack-cli@4.10.0
+npm WARN     node_modules/webpack-cli
+npm WARN   17 more (babel-loader, css-loader, eslint-webpack-plugin, ...)
+npm WARN
+npm WARN Could not resolve dependency:
+npm WARN peer webpack@">=5" from node-polyfill-webpack-plugin@2.0.1
+npm WARN node_modules/node-polyfill-webpack-plugin
+npm WARN   node-polyfill-webpack-plugin@"^2.0.1" from the root project
+
+added 31 packages, removed 76 packages, changed 21 packages, and audited 2291 packages in 4m
+
+190 packages are looking for funding
+  run `npm fund` for details
+
+28 vulnerabilities (1 low, 1 moderate, 18 high, 8 critical)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+******************************embora tenha compilado com warnings, no Firefox e no Chrome ficou uma tela branca****************
+Compiled with warnings.
+
+./node_modules/express/lib/view.js
+Critical dependency: the request of a dependency is an expression
+
+./node_modules/on-finished/index.js
+Module not found: Can't resolve 'async_hooks' in 'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\on-finished'
+
+./node_modules/raw-body/index.js
+Module not found: Can't resolve 'async_hooks' in 'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\node_modules\raw-body'
+
+src\Rotas.js
+  Line 4:8:  'Main' is defined but never used  no-unused-vars
+
+src\components\Carometro.js
+  Line 11:8:  'Col' is defined but never used  no-unused-vars
+  Line 13:8:  'Row' is defined but never used  no-unused-vars
+
+src\components\CrudAluno.js
+  Line 44:11:  'url' is assigned a value but never used  no-unused-vars
+
+src\components\CrudCurso.js
+  Line 45:11:  'url' is assigned a value but never used  no-unused-vars
+
+src\components\ImagensAlunos.js
+  Line 28:17:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+******************DEPURAÇÃO NO CHROME**************************
+Uncaught ReferenceError: process is not defined
+    at 4043 (<anonymous>:2:13168)
+    at r (<anonymous>:2:306599)
+    at 8048 (<anonymous>:2:9496)
+    at r (<anonymous>:2:306599)
+    at 8641 (<anonymous>:2:1379)
+    at r (<anonymous>:2:306599)
+    at <anonymous>:2:315627
+    at <anonymous>:2:324225
+    at <anonymous>:2:324229
+    at e.onload (vendors~main.chunk.js:sourcemap:110321:324845)
+
+
+*************** Tentei instalar a última versão do react-scripts (5.0.0) com o comando: npm install react-scripts@latest
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola> npm install react-scripts@latest
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE could not resolve
+npm ERR!
+npm ERR! While resolving: node-polyfill-webpack-plugin@2.0.1
+npm ERR! Found: webpack@4.44.2
+npm ERR! node_modules/webpack
+npm ERR!   peer webpack@"4.x.x || 5.x.x" from @webpack-cli/configtest@1.2.0
+npm ERR!   node_modules/@webpack-cli/configtest
+npm ERR!     @webpack-cli/configtest@"^1.2.0" from webpack-cli@4.10.0
+npm ERR!     node_modules/webpack-cli
+npm ERR!       peer webpack-cli@"4.x.x" from @webpack-cli/configtest@1.2.0
+npm ERR!       3 more (@webpack-cli/info, @webpack-cli/serve, the root project)
+npm ERR!   peer webpack@"4.x.x || 5.x.x" from webpack-cli@4.10.0
+npm ERR!   node_modules/webpack-cli
+npm ERR!     peer webpack-cli@"4.x.x" from @webpack-cli/configtest@1.2.0
+npm ERR!     peer webpack-cli@"4.x.x" from @webpack-cli/info@1.5.0
+npm ERR!     node_modules/@webpack-cli/info
+npm ERR!       @webpack-cli/info@"^1.5.0" from webpack-cli@4.10.0
+npm ERR!     2 more (@webpack-cli/serve, the root project)
+npm ERR!   3 more (webpack-dev-middleware, terser-webpack-plugin, the root project)
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer webpack@">=5" from node-polyfill-webpack-plugin@2.0.1
+npm ERR! node_modules/node-polyfill-webpack-plugin
+npm ERR!   node-polyfill-webpack-plugin@"^2.0.1" from the root project
+npm ERR!
+npm ERR! Conflicting peer dependency: webpack@5.74.0
+npm ERR! node_modules/webpack
+npm ERR!   peer webpack@">=5" from node-polyfill-webpack-plugin@2.0.1
+npm ERR!   node_modules/node-polyfill-webpack-plugin
+npm ERR!     node-polyfill-webpack-plugin@"^2.0.1" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR!
+npm ERR! See C:\Users\Marisa Cunha\AppData\Local\npm-cache\eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Marisa Cunha\AppData\Local\npm-cache\_logs\2022-10-06T08_51_01_623Z-debug-0.log
+
+
+C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola> npm install --save react-error-overlay@6.0.9
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE could not resolve
+npm ERR!
+npm ERR! While resolving: node-polyfill-webpack-plugin@2.0.1
+npm ERR! Found: webpack@4.44.2
+npm ERR! node_modules/webpack
+npm ERR!   peer webpack@"4.x.x || 5.x.x" from @webpack-cli/configtest@1.2.0
+npm ERR!   node_modules/@webpack-cli/configtest
+npm ERR!     @webpack-cli/configtest@"^1.2.0" from webpack-cli@4.10.0
+npm ERR!     node_modules/webpack-cli
+npm ERR!       peer webpack-cli@"4.x.x" from @webpack-cli/configtest@1.2.0
+npm ERR!       3 more (@webpack-cli/info, @webpack-cli/serve, the root project)
+npm ERR!   peer webpack@">=2" from babel-loader@8.1.0
+npm ERR!   node_modules/babel-loader
+npm ERR!     babel-loader@"8.1.0" from react-scripts@4.0.3
+npm ERR!     node_modules/react-scripts
+npm ERR!       react-scripts@"4.0.3" from the root project
+npm ERR!   20 more (css-loader, eslint-webpack-plugin, file-loader, ...)
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer webpack@">=5" from node-polyfill-webpack-plugin@2.0.1
+npm ERR! node_modules/node-polyfill-webpack-plugin
+npm ERR!   node-polyfill-webpack-plugin@"^2.0.1" from the root project
+npm ERR!
+npm ERR! Conflicting peer dependency: webpack@5.74.0
+npm ERR! node_modules/webpack
+npm ERR!   peer webpack@">=5" from node-polyfill-webpack-plugin@2.0.1
+npm ERR!   node_modules/node-polyfill-webpack-plugin
+npm ERR!     node-polyfill-webpack-plugin@"^2.0.1" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR!
+npm ERR! See C:\Users\Marisa Cunha\AppData\Local\npm-cache\eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Marisa Cunha\AppData\Local\npm-cache\_logs\2022-10-06T08_54_42_217Z-debug-0.log
+

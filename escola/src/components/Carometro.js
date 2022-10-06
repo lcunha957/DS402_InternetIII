@@ -17,14 +17,14 @@ import ImagensAlunos from "./ImagensAlunos";
 const title = "Portfólio das turmas";
 
 
-const urlAPIEstudante="http://localhost:5277/api/cadastroaluno";
+const urlAPIEstudante="http://localhost:5277/api/CadastroAluno";
 
 const urlAPICurso="http://localhost:5277/api/curso";
 
-//const urlAPIDeGatos = "https://api.thecatapi.com/v1/images/search";
+const urlAPIEstudanteCodCurso = "http://localhost:5277/api/CadastroAluno/CadastroAlunoCodigoCurso"
 
 const initialState= { 
-    estudantes:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:""},
+    estudantes:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", imagem:""},
     listaDeEstudante:[],
      };
 
@@ -33,7 +33,7 @@ const initialState= {
         listaDeCurso:[],
         };
         
-  
+     
      
      
 export default class Carometro extends Component{
@@ -48,10 +48,33 @@ componentDidMount() {
     axios(urlAPICurso).then(resp =>{
     this.setState({ listaDeCurso: resp.data })   
     });
+}
 
+    getListaDeEstudantesPorCodCursoAtualizada(estudantes,add = true) {
+        const listaDeEstudante = this.state.listaDeEstudante.filter(a => a.al_codCurso !== estudantes.al_codCurso);
+        if (add) listaDeEstudante.unshift(estudantes); 
+        return listaDeEstudante;
+        }
 
+                
+        handleCodCursoChange = (event) => {
+            const estudantes = { ...this.state.estudantes };
+            estudantes.al_codCurso = Number(event.target.value);
+            this.setState({ estudantes })
+            }
+    
+            
+        filtrarEstudante() { 
+            const estudantes = this.state.estudantes;             
+            estudantes.al_codCurso = Number(estudantes.al_codCurso)
+            const url = urlAPIEstudanteCodCurso + `/${estudantes.al_codCurso}`; 
+            axios['get'](url, estudantes).then(resp => {
+            const listaDeEstudante = this.getListaDeEstudantePorCodCursoAtualizada(resp.data);
+              this.setState({ estudantes: initialState.estudantes, listaDeEstudante }); 
+            });}
 
-       }
+    
+       
 
 
        renderTable(){
@@ -61,14 +84,14 @@ componentDidMount() {
             
         <th>
             <tr>
-            <select className="seletorCurso" name="infoCurso">
+            <select className="seletorCurso"  name="infoCurso" onChange={event => this.handleCodCursoChange(event)}>
                 <option value={"selecionar"}> Selecione um curso </option>
             {this.state.listaDeCurso.map((cursos) => (
              <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
          {cursos.codCurso} - {cursos.nomeCurso} </option>))}
              </select>
             </tr>
-            <button className="btnFiltrar"> Filtrar </button>
+            <button className="btnFiltrar" onClick={e => this.filtrarEstudante(e)}> Filtrar </button>
             </th>
             
             <th>
@@ -114,7 +137,7 @@ componentDidMount() {
     
 
 
-}
+
 
 /************************SESSÃO DE TESTE E EXPLICAÇÕES********************************/
 /* 1.Erro ao qual não encontro solução(não encontrei o arquivo webpack.config.js): 
@@ -319,4 +342,4 @@ var express = require('express');
                   
  
                 
-
+    }

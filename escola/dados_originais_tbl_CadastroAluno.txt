@@ -1,0 +1,20 @@
+Dados originais do CadastroAluno
+
+1	21106	Lunara Cunha	19	https://cdn2.thecatapi.com/images/hz0fwFell.jpg
+2	17485	Geraldo Osório	39	https://cdn2.thecatapi.com/images/3t7.jpg
+25	21567	Boca Rosa	5	https://cdn2.thecatapi.com/images/3Wjx1Tq7X.jpg
+26	34567	Marina Morena	59	https://cdn2.thecatapi.com/images/MTc3NjExMw.jpg
+27	15247	Roberto Sião	85	https://cdn2.thecatapi.com/images/bqq.jpg
+28	15937	Bon Jovi	59	https://cdn2.thecatapi.com/images/4r2.jpg
+29	27984	Florentina de Jesus	39	https://cdn2.thecatapi.com/images/3mc.jpg
+30	18995	Gael Schneider	59	https://cdn2.thecatapi.com/images/9m.gif
+
+
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img01.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img02.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img03.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img04.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img05.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img06.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img07.jpg'
+'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img08.gif'

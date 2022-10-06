@@ -9,7 +9,7 @@ using ProjetoEscola_API.Models;
 
 namespace ProjetoEscola_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CadastroAlunoController : ControllerBase
     {
@@ -22,80 +22,95 @@ namespace ProjetoEscola_API.Controllers
 
         [HttpGet]
         public ActionResult<List<CadastroAluno>> GetAll()
-        {
+         {  
+            if(_context.CadastroAluno is not null){
+
             return _context.CadastroAluno.ToList();
+            }
+            else{
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no acesso ao banco de dados");
+            }
         }
 
+        [ActionName("CadastroAlunoId")] 
         [HttpGet("{CadastroAlunoId}")]
-        public ActionResult<List<CadastroAluno>> Get(int CadastroAlunoId)
+        public ActionResult<List<CadastroAluno>> GetId(int CadastroAlunoId)
         {
-            try
-            {
-                var result = _context.CadastroAluno.Find(CadastroAlunoId);
+            
+                if(_context.CadastroAluno is not null){
+                     var result = _context.CadastroAluno.Find(CadastroAlunoId);
                 if (result == null)
                 {
                     return NotFound();
                 }
                 return Ok(result);
             }
-            catch
-            {
-                return this.StatusCode(
+            else{
+                 return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
                     "Falha no acesso ao banco de dados."
                 );
+            }
+            
+            }
+        
+        [ActionName("CadastroAlunoNome")]
+        [HttpGet("{CadastroAlunoNome}")]
+        public ActionResult<List<CadastroAluno>> GetAlunoNome(string CadastroAlunoNome)
+        {
+            if(_context.CadastroAluno is not null){
+                var result = _context.CadastroAluno.Where(a =>a.nomeAluno == CadastroAlunoNome);
+                if(result == null){
+                    return NotFound();
+                }
+                return Ok(result);
+            }
+            else {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha de acesso ao banco de dados.");
             }
         }
-        /*
-        [HttpGet("{CadastroAlunoAlCodCurso}")]
-        public ActionResult<List<CadastroAluno>> Get( int CadastroAlunoAlCodCurso, CadastroAluno CadastroAlunoOri)
-        {
-            try
-            {
-                var result = await _context.CadastroAluno.FindAsync(CadastroAlunoAlCodCurso);
-                   if (CadastroAlunoAlCodCurso != result.id)
-                {
-                    return BadRequest();
-                }
-                result.ra = CadastroAlunoOri.ra;
-                result.nomeAluno = CadastroAlunoOri.nomeAluno;
-                result.al_codCurso = CadastroAlunoOri.al_codCurso;
-                result.image = CadastroAlunoOri.image;
 
-                return Created($"/api/cadastroaluno/{CadastroAlunoOri.ra}", CadastroAlunoOri);
-            }
-            catch
-            {
-                return this.StatusCode(
-                    StatusCodes.Status500InternalServerError,
-                    "Falha no acesso ao banco de dados."
-                );
-            }
-        }*/
+        [ActionName("CadastroAlunoCodigoCurso")]
+        [HttpGet("{CadastroAlunoCodigoCurso}")]
+        public ActionResult<List<CadastroAluno>> GetAlunoCodigoCurso(int CadastroAlunoCodigoCurso) {
+             
+             if(_context.CadastroAluno is not null){
+                var result = _context.CadastroAluno.Where(a=>a.al_codCurso == CadastroAlunoCodigoCurso);
+                if(result == null){
+                    return NotFound();
+                } 
+                return Ok(result);
+             }
+             else {
+        return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha de acesso ao banco de dados.");
+
+             }  
+        }
 
         [HttpPost]
         public async Task<ActionResult> post(CadastroAluno model)
         {
-            try
-            {
-                _context.CadastroAluno.Add(model);
+            
+                if (_context.CadastroAluno is not null){
+                      _context.CadastroAluno.Add(model);
                 if ((await _context.SaveChangesAsync() == 1))
                 {
-                    //return Ok();
-                    return Created($"/api/cadastroaluno/{model.ra}", model);
-                }
-            }
-            catch
-            {
-                return this.StatusCode(
+                                        return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", model);
+                } else{  return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
-                    "Falha no acesso ao banco de dados."
+                    "Erro no salvamento dos dados."
                 );
             }
-            // retorna BadRequest se não conseguiu incluir
-            return BadRequest();
-        }
-
+                 }
+                 else {
+                    return this.StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "Falha no acesso ao banco de dados, sem dados de retorno."
+                );
+                 }
+          
+            }
+              
         [HttpPut("{CadastroAlunoId}")]
         public async Task<IActionResult> put(int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt)
         {
@@ -110,10 +125,10 @@ namespace ProjetoEscola_API.Controllers
                 result.ra = dadosCadastroAlunoAlt.ra;
                 result.nomeAluno = dadosCadastroAlunoAlt.nomeAluno;
                 result.al_codCurso = dadosCadastroAlunoAlt.al_codCurso;
-               
+                result.imagem = dadosCadastroAlunoAlt.imagem;
 
                 await _context.SaveChangesAsync();
-                return Created($"/api/cadastroaluno/{dadosCadastroAlunoAlt.ra}", dadosCadastroAlunoAlt);
+                return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt);
             }
             catch
             {
