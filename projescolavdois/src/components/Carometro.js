@@ -12,7 +12,7 @@ import ImagensAlunos from "./ImagensAlunos";
 
 const title = "Portfólio das turmas";
 
-const urlAPIEstudante="http://localhost:5277/api/CadastroAluno";
+const urlAPIEstudante="http://localhost:5277/api/CadastroAluno/GetAll";
 
 const urlAPICurso="http://localhost:5277/api/curso";
 
