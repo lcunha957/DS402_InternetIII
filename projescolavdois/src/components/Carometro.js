@@ -8,14 +8,9 @@ import "./Carometro.css";
 
 import Card from 'react-bootstrap/Card';
 
-import Col from 'react-bootstrap/Col';
-
-import Row from 'react-bootstrap/Row';
-
 import ImagensAlunos from "./ImagensAlunos";
 
 const title = "Portfólio das turmas";
-
 
 const urlAPIEstudante="http://localhost:5277/api/CadastroAluno";
 
