@@ -9,11 +9,17 @@ import Main from "./template/Main";
 
 const title = "Cadastrando os Alunos";
 
-const urlAPIAluno="http://localhost:5277/api/CadastroAluno";
+const urlAPIAluno="http://localhost:5277/api/CadastroAluno/GetAll";
 
 const urlAPICurso = "http://localhost:5277/api/curso";
 
+const urlAPIPutAluno ="http://localhost:5277/api/CadastroAluno/put/";
 
+const urlAPIPostAluno = "http://localhost:5277/api/CadastroAluno/post";
+
+const urlAPIGetAlunoId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
+
+const urlAPIDeleteAluno = "http://localhost:5277/api/CadastroAluno/delete";
 
 const initialState= { 
 alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"",imagem:""},
@@ -52,7 +58,7 @@ const alunos = this.state.alunos;
 
 alunos.al_codCurso = Number(alunos.al_codCurso)
 const metodo = alunos.id ? 'put' : 'post'; 
-const url = alunos.id ? `${urlAPIAluno}/${alunos.id}` : urlAPIAluno;
+const url = alunos.id ? `${urlAPIPutAluno}/${alunos.id}` : urlAPIPostAluno;
 axios[metodo](url, alunos).then(resp => {
 const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
   this.setState({ alunos: initialState.alunos, listaDeAluno }); 
@@ -85,7 +91,7 @@ this.setState({ alunos });
            
 carregar(alunos) {
 this.setState({ alunos });
-const url = urlAPIAluno + "/" + alunos.id;
+const url = urlAPIPutAluno + "/" + alunos.id;
 if (window.confirm("Confirma edição do aluno: " + alunos.ra)) {
 console.log("entrou na confirmação de editar o aluno");
 axios['put'](url, alunos).then((resp) => {
@@ -97,7 +103,7 @@ this.setState({ alunos: initialState.alunos, listaDeAluno });
 
 
 remover(alunos) {
-const url = urlAPIAluno + "/" + alunos.id;
+const url = urlAPIDeleteAluno + "/" + alunos.id;
 if (window.confirm("Confirma remoção do aluno: " + alunos.ra)) { 
 console.log("entrou na confirmação de remover o aluno");
 axios['delete'](url, alunos).then(resp => { 
