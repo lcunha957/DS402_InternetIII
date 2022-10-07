@@ -21,7 +21,7 @@ const urlAPIAlunoDelete = "http://localhost:5277/api/CadastroAluno/delete";
 
 //const urlAPIAlunoGetId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
 
-const defaultImageSrc = '/projescolavdois/src/assets/imagens/image_placeholder.PNG';
+const defaultImageSrc = '/public/img/image_placeholder.png';
  
 const initialState= { 
 alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:"", imageSrc:defaultImageSrc, imageFile:null},
