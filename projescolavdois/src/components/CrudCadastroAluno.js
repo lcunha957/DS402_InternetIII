@@ -183,6 +183,8 @@ renderTable() {
 <th className="tabTitCadRa">Ra</th>
 <th className="tabTitCadNome">Nome</th>
 <th className="tabTitCadCurso">Curso</th>
+<th className="tabImagem"> Imagem </th>
+<th className="tabAcoes"> Ações </th>
 </tr>
 </thead>
                     
@@ -191,6 +193,7 @@ renderTable() {
 <td>{alunos.ra}</td>
 <td>{alunos.nomeAluno}</td>
 <td>{alunos.al_codCurso}</td>
+<td>{alunos.imageFile}</td>
 <td> 
 <button  className = "botaoAltera" onClick={() => this.carregar(alunos)} > Alterar </button></td> 
 <td><button className = "botaoRemove" onClick={() => this.remover(alunos)} > Remover </button></td>
