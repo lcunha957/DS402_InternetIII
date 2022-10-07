@@ -9,7 +9,7 @@ import Main from "./template/Main";
 
 const title = "Cadastrando os Alunos";
 
-const urlAPIAluno="http://localhost:5277/api/CadastroAluno";
+const urlAPIAluno="http://localhost:5277/api/CadastroAluno/GetAll";
 
 const urlAPICurso = "http://localhost:5277/api/curso";
 
