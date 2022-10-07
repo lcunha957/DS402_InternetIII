@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-import img01 from '/src/assets/imagens/img01.jpg';
+import img01 from './imagens/img01.jpg';
 
 const apiUrlDeGatinhos = "https://localhost:5277/api/CadastroAluno/GetAll";
 
