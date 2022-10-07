@@ -118,6 +118,7 @@ export default class CrudAluno extends Component {
                onChange={ e => this.atualizaCampo(e)}
                /> 
 
+ 
                <button className="btnSalvar"
                 onClick={e => this.salvar(e)} >
                    Salvar

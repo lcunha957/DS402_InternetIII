@@ -7,7 +7,7 @@ import img01 from '../assets/imagens/img01.jpg';
 const apiUrlDeGatinhos = "https://localhost:5277/api/CadastroAluno/GetAll";
 
 const initialState = {
-    figuras: { id: " ", ra: " ", nomeAluno:" ", al_codCurso:" " },
+    figuras: { id: " ", ra: " ", nomeAluno:" ", al_codCurso:" ", foto:"" },
     listaDeFiguras: []
 }
 
