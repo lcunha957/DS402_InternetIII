@@ -21,7 +21,7 @@ const urlAPIAlunoDelete = "http://localhost:5277/api/CadastroAluno/delete";
 
 //const urlAPIAlunoGetId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
 
-const defaultImageSrc = '/public/img/image_placeholder.png';
+const defaultImageSrc = '/src/assets/imagens/image_placeholder.png';
  
 const initialState= { 
 alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:"", imageSrc:defaultImageSrc, imageFile:null},
@@ -125,8 +125,18 @@ handleCodCursoChange = (event) => {
 
 
 showPreview = (e) => {
-if (e.target.files && e.target.files[0]) {
- let imageFile = e.target.files[0]; 
+  const alunos = {...this.setState.alunos };
+  if (e.target.files && e.target.files[0]) {
+ let imageFile = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = x =>{
+    this.setState=({ 
+      ...alunos,              
+     imageFile: imageFile,
+     imageSrc: x.target.result              
+    })
+    }
+  reader.readAsDataURL(imageFile)  
 } 
 }
 
