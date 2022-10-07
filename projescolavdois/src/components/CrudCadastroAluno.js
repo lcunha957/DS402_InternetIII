@@ -13,16 +13,16 @@ const urlAPIAluno="http://localhost:5277/api/CadastroAluno/GetAll";
 
 const urlAPICurso = "http://localhost:5277/api/curso";
 
-const urlAPIPutAluno ="http://localhost:5277/api/CadastroAluno/put/";
+const urlAPIAlunoPut = "http://localhost:5277/api/CadastroAluno/put";
 
-const urlAPIPostAluno = "http://localhost:5277/api/CadastroAluno/post";
+const urlAPIAlunoPost = "http://localhost:5277/api/CadastroAluno/post";
 
-const urlAPIGetAlunoId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
+const urlAPIAlunoDelete = "http://localhost:5277/api/CadastroAluno/delete";
 
-const urlAPIDeleteAluno = "http://localhost:5277/api/CadastroAluno/delete";
+//const urlAPIAlunoGetId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
 
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"",imagem:""},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"",foto:""},
 listaDeAluno:[],
  };
 
@@ -58,7 +58,8 @@ const alunos = this.state.alunos;
 
 alunos.al_codCurso = Number(alunos.al_codCurso)
 const metodo = alunos.id ? 'put' : 'post'; 
-const url = alunos.id ? `${urlAPIPutAluno}/${alunos.id}` : urlAPIPostAluno;
+
+const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
 axios[metodo](url, alunos).then(resp => {
 const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
   this.setState({ alunos: initialState.alunos, listaDeAluno }); 
@@ -91,7 +92,7 @@ this.setState({ alunos });
            
 carregar(alunos) {
 this.setState({ alunos });
-const url = urlAPIPutAluno + "/" + alunos.id;
+const url = urlAPIAlunoPut + "/" + alunos.id;
 if (window.confirm("Confirma edição do aluno: " + alunos.ra)) {
 console.log("entrou na confirmação de editar o aluno");
 axios['put'](url, alunos).then((resp) => {
@@ -103,7 +104,7 @@ this.setState({ alunos: initialState.alunos, listaDeAluno });
 
 
 remover(alunos) {
-const url = urlAPIDeleteAluno + "/" + alunos.id;
+const url = urlAPIAlunoDelete + "/" + alunos.id;
 if (window.confirm("Confirma remoção do aluno: " + alunos.ra)) { 
 console.log("entrou na confirmação de remover o aluno");
 axios['delete'](url, alunos).then(resp => { 

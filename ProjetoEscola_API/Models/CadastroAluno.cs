@@ -15,7 +15,7 @@ namespace ProjetoEscola_API.Models{
        
         public int al_codCurso { get; set; }
 
-        public string? imagem { get;set; }
+        public string foto { get;set; }
 
  }
 
@@ -73,7 +73,7 @@ create table CadastroAluno(
 [ra] CHAR(5) NOT NULL,
 [nomeAluno] VARCHAR(30) NULL,
 [al_codCurso] INT,
-[imagem] VARCHAR(500),
+[foto] IMAGE NOT NULL,
 PRIMARY KEY CLUSTERED ([id] ASC),
 FOREIGN KEY ([al_codCurso]) references Curso ([codCurso]) 
 );
@@ -86,4 +86,16 @@ Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [imagem]) values ('15
 Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [imagem]) values ('15937','Bon Jovi',59, 'https://cdn2.thecatapi.com/images/4r2.jpg')
 Insert into CadastroAluno ([ra],[nomeAluno], [al_codCurso], [imagem]) values ('27984',	'Florentina de Jesus',39,'https://cdn2.thecatapi.com/images/3mc.jpg') 
 Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [imagem]) values ('18995','Gael Schneider',59,'https://cdn2.thecatapi.com/images/9m.gif')
+
+
+PARA USAR IMAGENS INTERNAS:
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [foto]) values ('21106', 'Lunara Cunha', 19, 'img01.jpg')
+Insert into CadastroAluno  ([ra],[nomeAluno],[al_codCurso], [foto]) values ('17485','Geraldo Osório', 39, 'img02.jpg')
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [foto]) values ('21567', 'Boca Rosa', 5, 'img03.jpg')
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [foto]) values ('34567', 'Marina Morena',59,'img04.jpg')
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [foto]) values ('15247','Roberto Sião',85, 'img05.jpg')
+Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [foto]) values ('15937','Bon Jovi',59, 'img06.jpg')
+Insert into CadastroAluno ([ra],[nomeAluno], [al_codCurso], [foto]) values ('27984', 'Florentina de Jesus', 39,'img07.jpg') 
+Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [foto]) values ('18995','Gael Schneider',59,'img08.gif')
+
 */

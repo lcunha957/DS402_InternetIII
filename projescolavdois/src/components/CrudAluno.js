@@ -8,7 +8,7 @@ import Main from "./template/Main";
 
 const title = "Cadastro de Alunos";
 
-const urlAPI="http://localhost:5277/api/aluno";
+const urlAPI="http://localhost:5277/api/Aluno";
 
 const initialState= { 
   aluno:{ id: 0,  ra: '', nome:' ', codCurso: 0},
@@ -118,6 +118,7 @@ export default class CrudAluno extends Component {
                onChange={ e => this.atualizaCampo(e)}
                /> 
 
+ 
                <button className="btnSalvar"
                 onClick={e => this.salvar(e)} >
                    Salvar

@@ -19,6 +19,8 @@ Dados originais do CadastroAluno
 'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img07.jpg'
 'C:\Users\Marisa Cunha\Documents\GitHub\projeto_react_Escola\DS402_InternetIII\escola\src\assets\imagens\img08.gif'
 
+
+
 ---------------------------------------------------------------------------------------------------------------
 
 PÁGINA ORIGINAL DO IMAGENSALUNOS.JS

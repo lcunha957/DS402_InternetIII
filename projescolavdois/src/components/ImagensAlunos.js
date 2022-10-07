@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
+import img01 from '../assets/imagens/img01.jpg';
 
-const apiUrlDeGatinhos = "https://api.thecatapi.com/v1/images/search"
+const apiUrlDeGatinhos = "https://localhost:5277/api/CadastroAluno/GetAll";
 
 const initialState = {
-    figuras: { id: "", url: '', width: 0, height: 0 },
+    figuras: { id: " ", ra: " ", nomeAluno:" ", al_codCurso:" ", foto:"" },
     listaDeFiguras: []
 }
 
@@ -24,10 +25,12 @@ export default class ImagensAlunos extends Component {
         return (
             <div>
             {this.state.listaDeFiguras.map(
-                (f) =>
-                <img style={{width:'200px', height:'140px', borderRadius:'20px'}} src={f.url}/>
+               (f) =>
+                <img style={{width:'200px', height:'140px', borderRadius:'20px'}} src={img01}/>
             )}
           </div>
         )
+
+
     }
 }
