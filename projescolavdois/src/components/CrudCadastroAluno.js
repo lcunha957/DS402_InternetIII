@@ -124,6 +124,11 @@ handleCodCursoChange = (event) => {
   }
 
 
+showPreview = (e) => {
+if (e.target.files && e.target.files[0]) {
+ let imageFile = e.target.files[0]; 
+} 
+}
 
 
 renderForm() {
@@ -149,7 +154,7 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
                
 <label> Imagem: </label> 
 <img src={this.state.alunos.imageSrc} className="card-img-top"></img>
-<input type="file" name="imagem" accept="image/*" className="form-control-file"></input>              
+<input type="file" name="imagem" accept="image/*" className="form-control-file" onChange={e => this.showPreview(e)}></input>              
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
 <button className="botaoCancelar" type="reset" onClick={e => this.limpar(e)} > Cancelar </button> </div>)}

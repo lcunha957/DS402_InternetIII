@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/u21106/Documents/Android/GitHub_Lunara/WebAvancado/Projs-react-asp/DS402_InternetIII/ProjetoEscola_API/ProjetoEscola_API.csproj": {}
+    "C:\\Users\\User\\Documents\\GitHub\\DS402_InternetIII\\ProjetoEscola_API\\ProjetoEscola_API.csproj": {}
   },
   "projects": {
-    "/Users/u21106/Documents/Android/GitHub_Lunara/WebAvancado/Projs-react-asp/DS402_InternetIII/ProjetoEscola_API/ProjetoEscola_API.csproj": {
+    "C:\\Users\\User\\Documents\\GitHub\\DS402_InternetIII\\ProjetoEscola_API\\ProjetoEscola_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/u21106/Documents/Android/GitHub_Lunara/WebAvancado/Projs-react-asp/DS402_InternetIII/ProjetoEscola_API/ProjetoEscola_API.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\DS402_InternetIII\\ProjetoEscola_API\\ProjetoEscola_API.csproj",
         "projectName": "ProjetoEscola_API",
-        "projectPath": "/Users/u21106/Documents/Android/GitHub_Lunara/WebAvancado/Projs-react-asp/DS402_InternetIII/ProjetoEscola_API/ProjetoEscola_API.csproj",
-        "packagesPath": "/Users/u21106/.nuget/packages/",
-        "outputPath": "/Users/u21106/Documents/Android/GitHub_Lunara/WebAvancado/Projs-react-asp/DS402_InternetIII/ProjetoEscola_API/obj/",
+        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\DS402_InternetIII\\ProjetoEscola_API\\ProjetoEscola_API.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\DS402_InternetIII\\ProjetoEscola_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/u21106/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -89,7 +91,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -101,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
