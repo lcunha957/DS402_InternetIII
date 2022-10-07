@@ -125,7 +125,7 @@ namespace ProjetoEscola_API.Controllers
                 result.ra = dadosCadastroAlunoAlt.ra;
                 result.nomeAluno = dadosCadastroAlunoAlt.nomeAluno;
                 result.al_codCurso = dadosCadastroAlunoAlt.al_codCurso;
-                result.foto = dadosCadastroAlunoAlt.foto;
+                result.nomeFoto = dadosCadastroAlunoAlt.nomeFoto;
 
                 await _context.SaveChangesAsync();
                 return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt);

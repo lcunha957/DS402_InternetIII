@@ -15,7 +15,7 @@ namespace ProjetoEscola_API.Models{
        
         public int al_codCurso { get; set; }
 
-        public string? NomeFoto { get;set; }
+        public string? nomeFoto { get;set; }
 
  }
 
