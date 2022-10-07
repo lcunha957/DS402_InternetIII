@@ -1,5 +1,5 @@
 
-import React, { Component } from "react";
+import React, { Component,  useEffect } from "react";
 
 import axios from 'axios';
 
@@ -21,8 +21,10 @@ const urlAPIAlunoDelete = "http://localhost:5277/api/CadastroAluno/delete";
 
 //const urlAPIAlunoGetId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
 
+const defaultImageSrc = '/projescolavdois/src/assets/imagens/image_placeholder.PNG';
+ 
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"",foto:""},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:"", imageSrc:defaultImageSrc, imageFile:null},
 listaDeAluno:[],
  };
 
@@ -145,6 +147,9 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
 {cursos.nomeCurso}</option>))}
 </select>
                
+<label> Imagem: </label> 
+<img src={this.state.alunos.imageSrc} className="card-img-top"></img>
+<input type="file" name="imagem" accept="image/*" className="form-control-file"></input>              
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
 <button className="botaoCancelar" type="reset" onClick={e => this.limpar(e)} > Cancelar </button> </div>)}
