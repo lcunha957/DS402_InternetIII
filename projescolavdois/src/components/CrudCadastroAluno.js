@@ -1,5 +1,5 @@
 
-import React, { Component,  useEffect } from "react";
+import React, { Component,  useEffect, useState } from "react";
 
 import axios from 'axios';
 
@@ -20,11 +20,11 @@ const urlAPIAlunoPost = "http://localhost:5277/api/CadastroAluno/post";
 const urlAPIAlunoDelete = "http://localhost:5277/api/CadastroAluno/delete";
 
 //const urlAPIAlunoGetId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
-
-const defaultImageSrc = '/img/image_placeholder.png';
+const defaultImageFile = '/img/image_placeholder.png';
+ 
  
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:"", imageSrc:defaultImageSrc, imageFile:null},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:"", imageSrc:'/img/', imageFile:defaultImageFile},
 listaDeAluno:[],
  };
 
@@ -33,10 +33,13 @@ cursos:{id: 0, codCurso:"", nomeCurso:"", periodo: ""},
 listaDeCurso:[],
 }  
 
+const statusImagem = {
+   textoDaImagem: {type:'', mensagem:''}
+}
 
 export default class CrudCadastroAluno extends Component {
 
-state={ ...initialState, ...ConfiguracaoDeCursos }
+state={ ...initialState, ...ConfiguracaoDeCursos, ...statusImagem }
 
 
 componentDidMount() {
@@ -124,28 +127,22 @@ handleCodCursoChange = (event) => {
   }
 
 
-showPreview = (e) => {
-  const alunos = {...this.setState.alunos };
-  if (e.target.files && e.target.files[0]) {
- let imageFile = e.target.files[0];
-  const reader = new FileReader();
-  reader.onload = x =>{
-    this.setState=({ 
-      ...alunos,              
-     imageFile,
-     imageSrc: x.target.result              
-    })
-    }
-  reader.readAsDataURL(imageFile)  
-}
-  else {
-    let imageFile = null;
-    this.setState=({ 
-      ...alunos,              
-     imageFile: null,
-     imageSrc: defaultImageSrc             
-    })
-  } 
+imgSelectHandler = (e) => {
+  if(e.target.files.length !==0){
+    const alunos = { ...this.state.alunos };
+    alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
+    alunos.imageSrc = '/img/' + alunos.imageFile;
+    this.setState({ alunos });
+      
+  }
+   else {
+    const alunos = {...this.state.alunos};
+    alunos.imageSrc = '/img/';
+    alunos.imageFile = defaultImageFile;
+    this.setState({ alunos })
+    window("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
+   }  
+ 
 }
 
 
@@ -171,8 +168,8 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
 </select>
                
 <label> Imagem: </label> 
-<img src={this.state.alunos.imageSrc} className="card-img-top"></img>
-<input type="file" name="imagem" accept="image/*" className="form-control-file" onChange={e => this.showPreview(e)}></input>              
+<img src={this.state.alunos.imageFile} className="card-img-left" alt="ver imagem" width={205} height={200}></img>
+<input type="file" name="imagem" accept="image/*" className="touro" onChange={this.imgSelectHandler.bind(this)}></input>              
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
 <button className="botaoCancelar" type="reset" onClick={e => this.limpar(e)} > Cancelar </button> </div>)}

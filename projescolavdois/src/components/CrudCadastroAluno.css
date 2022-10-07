@@ -129,3 +129,13 @@
     padding: 10px;
   }
 
+  input[type='file'] {
+    display:inline-flex;
+    width: 300px;
+    padding: 12px;
+    margin: 8px 0;
+    color:rgb(24, 78, 185);
+    border-radius: 20px; 
+    align-items: flex-end;
+
+  }
