@@ -88,14 +88,29 @@ namespace ProjetoEscola_API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> post(CadastroAluno model)
+        public async Task<ActionResult> post(CadastroAluno model, CadastroAluno dados, body)
         {
             
                 if (_context.CadastroAluno is not null){
                       _context.CadastroAluno.Add(model);
                 if ((await _context.SaveChangesAsync() == 1))
                 {
-                                        return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", model);
+
+                   model.ra = dados.ra;
+                   model.nomeAluno = dados.nomeAluno;
+                   model.al_codCurso = dados.al_codCurso;
+                   model.imageFile = Image(dados.imageFile); 
+                   model.imageSrc = dados.imageSrc;
+                   model.nomeFoto = dados.nomeFoto;
+
+                   const corpo ={
+                    headers: {
+                        'Content-type': 'multipart/form-data',
+                    },
+                   }
+
+
+            return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", dados, corpo);
                 } else{  return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
                     "Erro no salvamento dos dados."
@@ -112,7 +127,7 @@ namespace ProjetoEscola_API.Controllers
             }
               
         [HttpPut("{CadastroAlunoId}")]
-        public async Task<IActionResult> put(int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt)
+        public async Task<IActionResult> put(int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt, corpo)
         {
             try
             {
@@ -129,8 +144,14 @@ namespace ProjetoEscola_API.Controllers
                 result.imageSrc = dadosCadastroAlunoAlt.imageSrc;
                 result.nomeFoto = dadosCadastroAlunoAlt.nomeFoto;
 
+                const corpo = {
+                    headers: {
+                        'Content-type': 'multipart/form-data',
+                    },
+                 
+
                 await _context.SaveChangesAsync();
-                return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt);
+                return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt, corpo);
             }
             catch
             {
