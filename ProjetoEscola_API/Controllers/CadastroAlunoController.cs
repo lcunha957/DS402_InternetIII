@@ -148,10 +148,11 @@ namespace ProjetoEscola_API.Controllers
                     headers: {
                         'Content-type': 'multipart/form-data',
                     },
-                 
+                }  
 
                 await _context.SaveChangesAsync();
                 return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt, corpo);
+            
             }
             catch
             {
@@ -160,6 +161,7 @@ namespace ProjetoEscola_API.Controllers
                     "Falha no acesso ao banco de dados."
                 );
             }
+        
         }
 
         [HttpDelete("{AlunoId}")]
