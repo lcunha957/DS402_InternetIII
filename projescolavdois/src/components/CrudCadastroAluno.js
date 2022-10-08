@@ -33,7 +33,7 @@ cursos:{id: 0, codCurso:"", nomeCurso:"", periodo: ""},
 listaDeCurso:[],
 }  
 
-let base64code = "";
+
 
 export default class CrudCadastroAluno extends Component {
 
@@ -138,43 +138,28 @@ handleCodCursoChange = (event) => {
   this.setState({ alunos })
   }
 
-  onLoad = (fileString) =>{
-  this.base64code = fileString; 
- }
-  getbase64 = (file) =>{
-   let reader = new FileReader()
-   reader.readerAsDataURL(file);
-   reader.onload = ()  =>{
-    this.onLoad(reader.result);   
-   }    
-  }
 
-imgSelectHandler = (e) => {
-  const files = e.target.files;
-  const file = files[0]
-  if(files.length !==0){
-    const alunos = { ...this.state.alunos };
-    
-    this.getbase64(file);
-     
-      alunos.imageSrc = String.Format("data:image/*; base64,[0]", base64code);
-      alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
-      alunos.nomeFoto = this.getbase64(alunos.imageFile);
-       
-    this.setState({ alunos });
-    
+  imgSelectHandler = (e) => {
+    if(e.target.files.length !==0){
+      const alunos = { ...this.state.alunos };
       
+        alunos.imageSrc = '/img/' + alunos.imageFile;
+        alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
+        alunos.nomeFoto = (alunos.imageFile).toString;
+         
+      this.setState({ alunos });
+        
+    }
+     else {
+      const alunos = {...this.state.alunos};
+      alunos.imageSrc = '/img/';
+      alunos.imageFile = defaultImageFile;
+      alunos.nomeFoto = (alunos.imageFile).toString;
+      this.setState({ alunos })
+      window.confirm("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
+     }  
+   
   }
-   else {
-    const alunos = {...this.state.alunos};
-    alunos.imageSrc = '/img/';
-    alunos.imageFile = defaultImageFile;
-    alunos.nomeFoto = (alunos.imageFile).toString;
-    this.setState({ alunos })
-    window.confirm("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
-   }  
- 
-}
 
 
 renderForm() {
