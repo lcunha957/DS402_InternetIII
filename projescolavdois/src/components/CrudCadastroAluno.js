@@ -6,6 +6,7 @@ import axios from 'axios';
 import "./CrudCadastroAluno.css";
 
 import Main from "./template/Main";
+import { Image } from "react-bootstrap";
 
 const title = "Cadastrando os Alunos";
 
@@ -60,7 +61,7 @@ this.setState({ alunos: initialState.alunos });
 e.preventDefault();
 const alunos = this.state.alunos;
 alunos.al_codCurso = Number(alunos.al_codCurso);
-alunos.imageFile = Image(alunos.imageFile);
+alunos.imageFile = this.imgSelectHandler(alunos.imageFile);
 const model = new FormData();
 model.append("ra", alunos.ra);
 model.append("nomeAluno", alunos.nomeAluno);
@@ -143,7 +144,7 @@ handleCodCursoChange = (event) => {
     if(e.target.files.length !==0){
       const alunos = { ...this.state.alunos };
       
-        alunos.imageSrc = '/img/' + alunos.imageFile;
+        alunos.imageSrc = "C:/Users/User/Documents/GitHub/DS402_InternetIII/projescolavdois/public/img" + alunos.imageFile;
         alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
         alunos.nomeFoto = (alunos.imageFile).toString;
          
