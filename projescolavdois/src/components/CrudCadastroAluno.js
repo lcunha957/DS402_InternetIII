@@ -33,7 +33,7 @@ cursos:{id: 0, codCurso:"", nomeCurso:"", periodo: ""},
 listaDeCurso:[],
 }  
 
-
+let base64code = "";
 
 export default class CrudCadastroAluno extends Component {
 
@@ -138,17 +138,31 @@ handleCodCursoChange = (event) => {
   this.setState({ alunos })
   }
 
-
+  onLoad = (fileString) =>{
+  this.base64code = fileString; 
+ }
+  getbase64 = (file) =>{
+   let reader = new FileReader()
+   reader.readerAsDataURL(file);
+   reader.onload = ()  =>{
+    this.onLoad(reader.result);   
+   }    
+  }
 
 imgSelectHandler = (e) => {
-  if(e.target.files.length !==0){
+  const files = e.target.files;
+  const file = files[0]
+  if(files.length !==0){
     const alunos = { ...this.state.alunos };
     
-      alunos.imageSrc = '/img/' + alunos.imageFile;
+    this.getbase64(file);
+     
+      alunos.imageSrc = String.Format("data:image/*; base64,[0]", base64code);
       alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
-      alunos.nomeFoto = (alunos.imageFile).toString;
+      alunos.nomeFoto = this.getbase64(alunos.imageFile);
        
     this.setState({ alunos });
+    
       
   }
    else {

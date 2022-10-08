@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoEscola_API.Data;
 using ProjetoEscola_API.Models;
+using System.IO; 
 
 
 namespace ProjetoEscola_API.Controllers
@@ -88,36 +89,17 @@ namespace ProjetoEscola_API.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> post([Bind]CadastroAluno model, CadastroAluno dados)
+       
+        public async Task<ActionResult> post(CadastroAluno model, CadastroAluno dados)
         {
             
-            string uploadPath = "Images/";
-            
+
+              
+                            
                 if (_context.CadastroAluno is not null){
                       _context.CadastroAluno.Add(model);
                 if ((await _context.SaveChangesAsync() == 1))
                 {
-                   var files = HttpContext.Request.Form.Files;
-                
-                   foreach(var file in files )
-                   {
-                       if (file != null && file.Length>0)
-                       {
-                           var fileName = Guid.NewGuid().ToString().Replace("-","") + Path.GetExtension(file.FileName);
-                           var uploadPathWithfileName = Path.Combine(uploadPath, fileName);
-                           var uploadAbsolutePath = Path.Combine(_appEnvironment.WebRootPath, uploadPathWithfileName);
-                           
-                           using(var fileStream = new FileStream(uploadAbsolutePath, FileMode.Create))
-                           {
-                             await file.CopyToAsync(fileStream);
-                             model.nomeFoto = uploadPathWithfileName;    
-                           }
-                       }
-                   }
-                   
-                    
-                    
                     model.ra = dados.ra;
                     model.nomeAluno = dados.nomeAluno;
                     model.al_codCurso = dados.al_codCurso;
@@ -125,26 +107,25 @@ namespace ProjetoEscola_API.Controllers
                     model.imageSrc = dados.imageSrc;
                     model.nomeFoto = dados.nomeFoto;
             
-                   }
-                
-                else{ 
+               }
+                 else{ 
                       return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
                     "Erro no salvamento dos dados."
                 );
-                }
-
-            return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", dados);
+                }   
+                  
+                      return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", dados);
+                   }
                 
-                } 
-            
-                 
-                 else {
+                else {
                     return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
                     "Falha no acesso ao banco de dados, sem dados de retorno."
                 );
-                 }
+                }
+                 
+                
           
             }
         

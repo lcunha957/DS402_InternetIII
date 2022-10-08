@@ -15,7 +15,7 @@ namespace ProjetoEscola_API.Models{
 
         public int al_codCurso { get; set; }
         
-        public byte[] imageFile { get;set; } 
+        public HttpPostFileBase imageFile { get;set; } 
 
         public string? imageSrc { get;set; }
         
