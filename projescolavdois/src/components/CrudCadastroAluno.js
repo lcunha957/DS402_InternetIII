@@ -24,7 +24,7 @@ const defaultImageFile = '/img/image_placeholder.png';
  
  
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", imageFile:'', imageSrc:'/img/', nomeFoto:''},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", imageFile:defaultImageFile, imageSrc:'/img/', nomeFoto:''},
 listaDeAluno:[],
  };
 
@@ -178,7 +178,7 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
 </select>
                
 <label> Imagem: </label> 
-<img src={this.state.alunos.nomeFoto} className="card-img-left" alt="ver imagem" width={205} height={200}></img>
+<img src={this.state.alunos.imageFile} className="card-img-left" alt="ver imagem" width={205} height={200}></img>
 <input type="file" name="imagem" accept="image/*" className="touro" onChange={this.imgSelectHandler.bind(this)}></input> 
              
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
