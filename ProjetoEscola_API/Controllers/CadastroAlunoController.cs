@@ -90,7 +90,7 @@ namespace ProjetoEscola_API.Controllers
 
         [HttpPost]
        
-        public async Task<ActionResult> post(CadastroAluno model, CadastroAluno dados)
+        public async Task<ActionResult> post(CadastroAluno model, [FromForm]CadastroAluno dados)
         {
             
 
