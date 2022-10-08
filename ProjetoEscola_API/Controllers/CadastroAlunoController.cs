@@ -88,22 +88,43 @@ namespace ProjetoEscola_API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> post([FromForm]CadastroAluno model, CadastroAluno dados)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> post([Bind]CadastroAluno model, CadastroAluno dados)
         {
+            
+            string uploadPath = "uploads/img";
             
                 if (_context.CadastroAluno is not null){
                       _context.CadastroAluno.Add(model);
                 if ((await _context.SaveChangesAsync() == 1))
                 {
-
-
-                   model.ra = dados.ra;
-                   model.nomeAluno = dados.nomeAluno;
-                   model.al_codCurso = dados.al_codCurso;
-                   model.imageFile = IFormFile(dados.imageFile); 
-                   model.imageSrc = dados.imageSrc;
-                   model.nomeFoto =  await SaveImage(dados.imageFile) = dados.nomeFoto;
-
+                   var files = HttpContext.Request.Form.Files;
+                
+                   foreach(var file in files )
+                   {
+                       if (file != null && file.Length>0)
+                       {
+                           var fileName = Guid.NewGuid().ToString().Replace("-","") + Path.GetExtension(file.FileName);
+                           var uploadPathWithfileName = Path.Combine(uploadPath, fileName);
+                           var uploadAbsolutePath = Path.Combine(_appEnvironment.WebRootPath, uploadPathWithfileName);
+                           
+                           using(var fileStream = new FileStream(uploadAbsolutePath, FileMode.Create))
+                           {
+                             await file.CopyToAsync(fileStream);
+                             model.ImageName = uploadPathWithfileName;    
+                           }
+                       }
+                   }
+                   
+                    model.ImageName = model.nomeFoto;
+                    
+                    model.ra = dados.ra;
+                    model.nomeAluno = dados.nomeAluno;
+                    model.al_codCurso = dados.al_codCurso;
+                    model.imageFile = dados.imageFile;
+                    model.imageSrc = dados.imageSrc;
+                    model.nomeFoto = dados.nomeFoto;
+            
                    }
                 
                 else{ 
@@ -128,7 +149,7 @@ namespace ProjetoEscola_API.Controllers
             }
         
         [HttpPut("{CadastroAlunoId}")]
-        public async Task<IActionResult> put([FromForm]int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt)
+        public async Task<IActionResult> put(int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt)
         {
             try
             {
@@ -141,9 +162,9 @@ namespace ProjetoEscola_API.Controllers
                 result.ra = dadosCadastroAlunoAlt.ra;
                 result.nomeAluno = dadosCadastroAlunoAlt.nomeAluno;
                 result.al_codCurso = dadosCadastroAlunoAlt.al_codCurso;
-                result.imageFile = IFormFile(dadosCadastroAlunoAlt.imageFile);
+                result.imageFile = (dadosCadastroAlunoAlt.imageFile);
                 result.imageSrc = dadosCadastroAlunoAlt.imageSrc;
-                result.nomeFoto =  await SaveImage(dadosCadastroAlunoAl.imageFile) = dadosCadastroAlunoAlt.nomeFoto;
+                result.nomeFoto =  dadosCadastroAlunoAlt.nomeFoto;
 
         
                 await _context.SaveChangesAsync();
@@ -184,21 +205,7 @@ namespace ProjetoEscola_API.Controllers
             }
         }
         
-        // Para evitar de ter imagens duplicadas no banco de dados...
-        [NonAction]
-        public async Task<string> SaveImage(IFormFile imageFile, HttpContext httpContext)
-        {
-            string nomeFoto = new String(Path.GetFileWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ','-');
-            nomeFoto = nomeFoto+DateTime.Now.ToString("yymmssfff")+Path.GetExtension(imageFile.FileName);
-            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", nomeFoto);
-            using(var fileStream = new FileStream(imagePath, FileMode.Create))
-                  {
-                       await imageFile.CopyToAsync(fileStream);
-                      
-                  }
-                  return nomeFoto;  
-            
-        }
+   
     }
 }
 
