@@ -109,7 +109,7 @@ namespace ProjetoEscola_API.Controllers
                   cadastroaluno.nomeFoto = model.nomeFoto;
                   
                 await _context.SaveChangesAsync();
-                      return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}");
+                      return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", model);
                       
                 
                 }
@@ -150,6 +150,7 @@ namespace ProjetoEscola_API.Controllers
                 result.ra = dadosCadastroAlunoAlt.ra;
                 result.nomeAluno = dadosCadastroAlunoAlt.nomeAluno;
                 result.al_codCurso = dadosCadastroAlunoAlt.al_codCurso;
+
                 result.imageSrc = dadosCadastroAlunoAlt.imageSrc;
                 result.nomeFoto =  dadosCadastroAlunoAlt.nomeFoto;
 
