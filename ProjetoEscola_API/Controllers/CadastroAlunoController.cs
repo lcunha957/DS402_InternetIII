@@ -92,7 +92,7 @@ namespace ProjetoEscola_API.Controllers
         public async Task<ActionResult> post([Bind]CadastroAluno model, CadastroAluno dados)
         {
             
-            string uploadPath = "uploads/img";
+            string uploadPath = "Images/";
             
                 if (_context.CadastroAluno is not null){
                       _context.CadastroAluno.Add(model);
@@ -111,12 +111,12 @@ namespace ProjetoEscola_API.Controllers
                            using(var fileStream = new FileStream(uploadAbsolutePath, FileMode.Create))
                            {
                              await file.CopyToAsync(fileStream);
-                             model.ImageName = uploadPathWithfileName;    
+                             model.nomeFoto = uploadPathWithfileName;    
                            }
                        }
                    }
                    
-                    model.ImageName = model.nomeFoto;
+                    
                     
                     model.ra = dados.ra;
                     model.nomeAluno = dados.nomeAluno;
