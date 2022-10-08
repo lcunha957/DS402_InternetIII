@@ -88,7 +88,7 @@ namespace ProjetoEscola_API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> post(CadastroAluno model, CadastroAluno dados, body)
+        public async Task<ActionResult> post([FromForm]CadastroAluno model, CadastroAluno dados)
         {
             
                 if (_context.CadastroAluno is not null){
@@ -96,17 +96,14 @@ namespace ProjetoEscola_API.Controllers
                 if ((await _context.SaveChangesAsync() == 1))
                 {
 
+
                    model.ra = dados.ra;
                    model.nomeAluno = dados.nomeAluno;
                    model.al_codCurso = dados.al_codCurso;
                    model.imageFile = Image(dados.imageFile); 
                    model.imageSrc = dados.imageSrc;
-                   model.nomeFoto = dados.nomeFoto;
+                   model.nomeFoto =  await SaveImage(dados.imageFile) = dados.nomeFoto;
 
-                   const corpo ={
-                    headers: {
-                        'Content-type': 'multipart/form-data',
-                    },
                    }
 
 
@@ -127,7 +124,7 @@ namespace ProjetoEscola_API.Controllers
             }
               
         [HttpPut("{CadastroAlunoId}")]
-        public async Task<IActionResult> put(int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt, corpo)
+        public async Task<IActionResult> put([FromForm]int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt)
         {
             try
             {
@@ -142,16 +139,11 @@ namespace ProjetoEscola_API.Controllers
                 result.al_codCurso = dadosCadastroAlunoAlt.al_codCurso;
                 result.imageFile = Image(dadosCadastroAlunoAlt.imageFile);
                 result.imageSrc = dadosCadastroAlunoAlt.imageSrc;
-                result.nomeFoto = dadosCadastroAlunoAlt.nomeFoto;
+                result.nomeFoto =  await SaveImage(dadosCadastroAlunoAlt.imageFile) = dadosCadastroAluno.nomeFoto;
 
-                const corpo = {
-                    headers: {
-                        'Content-type': 'multipart/form-data',
-                    },
-                }  
-
+        
                 await _context.SaveChangesAsync();
-                return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt, corpo);
+                return Created($"/api/cadastroaluno/CadastroAlunoId/{result.id}", dadosCadastroAlunoAlt);
             
             }
             catch
@@ -186,6 +178,22 @@ namespace ProjetoEscola_API.Controllers
                     "Falha no acesso ao banco de dados."
                 );
             }
+        }
+        
+        // Para evitar de ter imagens duplicadas no banco de dados...
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imageFile, HttpContext httpContext)
+        {
+            string nomeFoto = String(Path.GetFileWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace('','-');
+            nomeFoto = nomeFoto+DateTime.Now.ToString("yymmssfff")+Path.GetExtension(imageFile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", nomeFoto);
+            using(var fileStream = new FileStream(imagePath, FileModel.Create))
+                  {
+                       await imageFile.CopyToAsync(fileStream);
+                      
+                  }
+                  return nomeFoto;  
+            
         }
     }
 }
