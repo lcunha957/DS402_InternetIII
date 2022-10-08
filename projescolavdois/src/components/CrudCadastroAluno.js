@@ -67,7 +67,7 @@ model.append("nomeAluno", alunos.nomeAluno);
 model.append("al_codCurso", alunos.al_codCurso);
 model.append("nomeFoto", alunos.nomeFoto);
 model.append("imageSrc", alunos.imageSrc);
-model.append("imageFile", alunos.imageFile);
+
 
   const metodo = alunos.id ? 'put' : 'post';
   const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
@@ -225,7 +225,7 @@ renderTable() {
 <td>{alunos.ra}</td>
 <td>{alunos.nomeAluno}</td>
 <td>{alunos.al_codCurso}</td>
-<td>{alunos.imageFile}</td>
+<td>{alunos.nomeFoto}</td>
 <td> 
 <button  className = "botaoAltera" onClick={() => this.carregar(alunos)} > Alterar </button></td> 
 <td><button className = "botaoRemove" onClick={() => this.remover(alunos)} > Remover </button></td>
