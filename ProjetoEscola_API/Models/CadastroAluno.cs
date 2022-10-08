@@ -17,6 +17,8 @@ namespace ProjetoEscola_API.Models{
 
         public string? nomeFoto { get;set; }
 
+        public string? imageSrc { get;set; }
+
  }
 
 }
@@ -74,6 +76,7 @@ create table CadastroAluno(
 [nomeAluno] VARCHAR(30) NULL,
 [al_codCurso] INT,
 [nomeFoto] VARCHAR(500) NULL,
+[imageSrc] VARCHAR(500)
 PRIMARY KEY CLUSTERED ([id] ASC),
 FOREIGN KEY ([al_codCurso]) references Curso ([codCurso]) 
 );

@@ -24,7 +24,7 @@ const defaultImageFile = '/img/image_placeholder.png';
  
  
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:"", imageSrc:'/img/', imageFile:defaultImageFile},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:defaultImageFile, imageSrc:'/img/'},
 listaDeAluno:[],
  };
 
@@ -130,7 +130,7 @@ handleCodCursoChange = (event) => {
 imgSelectHandler = (e) => {
   if(e.target.files.length !==0){
     const alunos = { ...this.state.alunos };
-    alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
+    alunos.nomeFoto = URL.createObjectURL(e.target.files[0]);    
     alunos.imageSrc = '/img/' + alunos.imageFile;
     this.setState({ alunos });
       
@@ -138,7 +138,7 @@ imgSelectHandler = (e) => {
    else {
     const alunos = {...this.state.alunos};
     alunos.imageSrc = '/img/';
-    alunos.imageFile = defaultImageFile;
+    alunos.nomeFoto = defaultImageFile;
     this.setState({ alunos })
     window("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
    }  
@@ -168,7 +168,7 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
 </select>
                
 <label> Imagem: </label> 
-<img src={this.state.alunos.imageFile} className="card-img-left" alt="ver imagem" width={205} height={200}></img>
+<img src={this.state.alunos.nomeFoto} className="card-img-left" alt="ver imagem" width={205} height={200}></img>
 <input type="file" name="imagem" accept="image/*" className="touro" onChange={this.imgSelectHandler.bind(this)}></input>              
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
