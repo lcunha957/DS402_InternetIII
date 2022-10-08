@@ -105,15 +105,19 @@ namespace ProjetoEscola_API.Controllers
                    model.nomeFoto =  await SaveImage(dados.imageFile) = dados.nomeFoto;
 
                    }
-
-
-            return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", dados, corpo);
-                } else{  return this.StatusCode(
+                
+                else{ 
+                      return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
                     "Erro no salvamento dos dados."
                 );
-            }
-                 }
+                }
+
+            return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", dados);
+                
+                } 
+            
+                 
                  else {
                     return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
@@ -122,7 +126,7 @@ namespace ProjetoEscola_API.Controllers
                  }
           
             }
-              
+        
         [HttpPut("{CadastroAlunoId}")]
         public async Task<IActionResult> put([FromForm]int CadastroAlunoId, CadastroAluno dadosCadastroAlunoAlt)
         {
@@ -197,3 +201,4 @@ namespace ProjetoEscola_API.Controllers
         }
     }
 }
+
