@@ -105,17 +105,23 @@ namespace ProjetoEscola_API.Controllers
                   cadastroaluno.ra = model.ra;
                   cadastroaluno.nomeAluno = model.nomeAluno;
                   cadastroaluno.al_codCurso = model.al_codCurso;
-                  cadastroaluno.imageFile = model.imageFile;
+                                    
+                  using(var binaryReader = newBinaryReader(model.imageSrc.InputStream))
+                   cadastroaluno.imageFile = binaryReader.ReadBytes(model.imageUpload.ContentLength);
+                   
                   cadastroaluno.imageSrc = model.imageSrc;
                   cadastroaluno.nomeFoto = model.nomeFoto;
                   
-                  return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}");
-               }
+                await _context.SaveChangesAsync();
+                      return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}");
+                      
                  else{ 
                       return this.StatusCode(
                     StatusCodes.Status500InternalServerError,
                     "Erro no salvamento dos dados."
                 );
+                   
+               }
                 }   
                   
                      
