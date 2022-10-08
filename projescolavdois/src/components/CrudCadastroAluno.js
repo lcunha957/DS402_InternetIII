@@ -61,13 +61,13 @@ e.preventDefault();
 const alunos = this.state.alunos;
 alunos.al_codCurso = Number(alunos.al_codCurso);
 alunos.imageFile = Image(alunos.imageFile);
-const dados = new FormData();
-dados.append("ra", alunos.ra);
-dados.append("nomeAluno", alunos.nomeAluno);
-dados.append("al_codCurso", alunos.al_codCurso);
-dados.append("nomeFoto", alunos.nomeFoto);
-dados.append("imageSrc", alunos.imageSrc);
-dados.append("imageFile", alunos.imageFile);
+const model = new FormData();
+model.append("ra", alunos.ra);
+model.append("nomeAluno", alunos.nomeAluno);
+model.append("al_codCurso", alunos.al_codCurso);
+model.append("nomeFoto", alunos.nomeFoto);
+model.append("imageSrc", alunos.imageSrc);
+model.append("imageFile", alunos.imageFile);
 
   const metodo = alunos.id ? 'put' : 'post';
   const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
@@ -76,9 +76,9 @@ dados.append("imageFile", alunos.imageFile);
   if(url === urlAPIAlunoPost){
     window.confirm("O cadastro do(a) aluno(a)" + alunos.ra + "foi salvo com sucesso");
   }  
-  axios[metodo](url, alunos, dados, corpo).then(resp => {
+  axios[metodo](url, alunos, model, corpo).then(resp => {
     const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
-  this.setState({ alunos: initialState.alunos, dados, corpo, listaDeAluno }); 
+  this.setState({ alunos: initialState.alunos, model, corpo, listaDeAluno }); 
   });  
 }
 

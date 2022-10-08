@@ -90,7 +90,7 @@ namespace ProjetoEscola_API.Controllers
 
         [HttpPost]
        
-        public async Task<ActionResult> post(CadastroAluno model, [FromForm]CadastroAluno dados)
+        public async Task<ActionResult> post(CadastroAluno model)
         {
             
 
@@ -100,13 +100,16 @@ namespace ProjetoEscola_API.Controllers
                       _context.CadastroAluno.Add(model);
                 if ((await _context.SaveChangesAsync() == 1))
                 {
-                    model.ra = dados.ra;
-                    model.nomeAluno = dados.nomeAluno;
-                    model.al_codCurso = dados.al_codCurso;
-                    model.imageFile = dados.imageFile;
-                    model.imageSrc = dados.imageSrc;
-                    model.nomeFoto = dados.nomeFoto;
-            
+                  
+                  var cadastroaluno = new CadastroAluno();
+                  cadastroaluno.ra = model.ra;
+                  cadastroaluno.nomeAluno = model.nomeAluno;
+                  cadastroaluno.al_codCurso = model.al_codCurso;
+                  cadastroaluno.imageFile = model.imageFile;
+                  cadastroaluno.imageSrc = model.imageSrc;
+                  cadastroaluno.nomeFoto = model.nomeFoto;
+                  
+                  return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}");
                }
                  else{ 
                       return this.StatusCode(
@@ -115,7 +118,7 @@ namespace ProjetoEscola_API.Controllers
                 );
                 }   
                   
-                      return Created($"/api/cadastroaluno/CadastroAlunoId/{model.ra}", dados);
+                     
                    }
                 
                 else {
