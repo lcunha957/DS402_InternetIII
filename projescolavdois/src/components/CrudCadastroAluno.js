@@ -56,7 +56,7 @@ this.setState({ alunos: initialState.alunos });
 }
 
       
-salvar(e) { 
+ async salvar(e) { 
 e.preventDefault();
 const alunos = this.state.alunos;
 alunos.al_codCurso = Number(alunos.al_codCurso);
@@ -68,12 +68,16 @@ dados.append("al_codCurso", alunos.al_codCurso);
 dados.append("nomeFoto", alunos.nomeFoto);
 dados.append("imageSrc", alunos.imageSrc);
 dados.append("imageFile", alunos.imageFile);
-const metodo = alunos.id ? 'put' : 'post'; 
-const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
-axios[metodo](url, alunos).then(resp => {
-const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
-  this.setState({ alunos: initialState.alunos, listaDeAluno }); 
-});}
+
+  const metodo = alunos.id ? 'put' : 'post';
+  const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
+  const corpo = {headers:{ 'Content-type':`multipart/form-data`, }}
+  
+  axios[metodo](url, alunos, dados, corpo).then(resp => {
+  const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
+  this.setState({ alunos: initialState.alunos, dados, corpo, listaDeAluno }); 
+  });  
+}
 
 
 
