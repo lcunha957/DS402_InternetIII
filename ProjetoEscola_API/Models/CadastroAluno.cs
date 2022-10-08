@@ -11,13 +11,15 @@ namespace ProjetoEscola_API.Models{
  
         public string? ra { get; set; }
        
-        public string? nomeAluno { get; set; }
-       
-        public int al_codCurso { get; set; }
+        public string? nomeAluno { get; set; } 
 
-        public string? nomeFoto { get;set; }
+        public int al_codCurso { get; set; }
+        
+        public image? imageFile { get;set; } 
 
         public string? imageSrc { get;set; }
+        
+        public string? nomeFoto { get;set; }   
 
  }
 
@@ -75,8 +77,9 @@ create table CadastroAluno(
 [ra] CHAR(5) NOT NULL,
 [nomeAluno] VARCHAR(30) NULL,
 [al_codCurso] INT,
+[imageFile] IMAGE NULL,
+[imageSrc] VARCHAR(500) NULL,
 [nomeFoto] VARCHAR(500) NULL,
-[imageSrc] VARCHAR(500)
 PRIMARY KEY CLUSTERED ([id] ASC),
 FOREIGN KEY ([al_codCurso]) references Curso ([codCurso]) 
 );
@@ -92,13 +95,12 @@ Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [imagem]) values ('
 
 
 PARA USAR IMAGENS INTERNAS:
-Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [nomeFoto]) values ('21106', 'Lunara Cunha', 19, null)
-Insert into CadastroAluno  ([ra],[nomeAluno],[al_codCurso], [nomeFoto]) values ('17485','Geraldo Osório', 39, null)
-Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [nomeFoto]) values ('21567', 'Boca Rosa', 5, null)
-Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [nomeFoto]) values ('34567', 'Marina Morena',59, null)
-Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [nomeFoto]) values ('15247','Roberto Sião',85,null)
-Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [nomeFoto]) values ('15937','Bon Jovi',59,null)
-Insert into CadastroAluno ([ra],[nomeAluno], [al_codCurso], [nomeFoto]) values ('27984', 'Florentina de Jesus', 39, null) 
-Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [nomeFoto]) values ('18995','Gael Schneider',59,null)
-
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso],[imageFile],[imageSrc],[nomeFoto]) values ('21106', 'Lunara Cunha', 19, null, null, null)
+Insert into CadastroAluno  ([ra],[nomeAluno],[al_codCurso], [imageFile],[imageSrc],[nomeFoto]) values ('17485','Geraldo Osório', 39, null, null, null)
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [imageFile],[imageSrc],[nomeFoto]) values ('21567', 'Boca Rosa', 5,null,null,null)
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [imageFile],[imageSrc],[nomeFoto]) values ('34567', 'Marina Morena',59,null,null,null)
+Insert into CadastroAluno ([ra],[nomeAluno],[al_codCurso], [imageFile],[imageSrc],[nomeFoto]) values ('15247','Roberto Sião',85,null,null,null)
+Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso],[imageFile],[imageSrc],[nomeFoto]) values ('15937','Bon Jovi',59,null,null,null)
+Insert into CadastroAluno ([ra],[nomeAluno], [al_codCurso],[imageFile],[imageSrc],[nomeFoto]) values ('27984', 'Florentina de Jesus', 39, null,null,null) 
+Insert into CadastroAluno ([ra], [nomeAluno], [al_codCurso], [imageFile],[imageSrc],[nomeFoto]) values ('18995','Gael Schneider',59,null,null,null)
 */

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 
-import img01 from './img/img01.jpg';
-
+const img01 = '/img/img01.jpg';
+ 
 const apiUrlDeGatinhos = "https://localhost:5277/api/CadastroAluno/GetAll";
 
 const initialState = {
@@ -26,7 +26,7 @@ export default class ImagensAlunos extends Component {
             <div>
             {this.state.listaDeFiguras.map(
                (f) =>
-                <img style={{width:'200px', height:'140px', borderRadius:'20px'}} src={img01}/>
+                <img style={{width:'200px', height:'140px', borderRadius:'20px'}} src={img01} alt="imagem01"/>
             )}
           </div>
         )

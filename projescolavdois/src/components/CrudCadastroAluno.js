@@ -24,7 +24,7 @@ const defaultImageFile = '/img/image_placeholder.png';
  
  
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", nomeFoto:defaultImageFile, imageSrc:'/img/'},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", imageFile:defaultImageFile, imageSrc:'/img/', nomeFoto:''},
 listaDeAluno:[],
  };
 
@@ -33,13 +33,11 @@ cursos:{id: 0, codCurso:"", nomeCurso:"", periodo: ""},
 listaDeCurso:[],
 }  
 
-const statusImagem = {
-   textoDaImagem: {type:'', mensagem:''}
-}
+
 
 export default class CrudCadastroAluno extends Component {
 
-state={ ...initialState, ...ConfiguracaoDeCursos, ...statusImagem }
+state={ ...initialState, ...ConfiguracaoDeCursos}
 
 
 componentDidMount() {
@@ -58,12 +56,19 @@ this.setState({ alunos: initialState.alunos });
 }
 
       
-salvar() { 
-const alunos = this.state.alunos; 
-
-alunos.al_codCurso = Number(alunos.al_codCurso)
+salvar(e) { 
+e.preventDefault();
+const alunos = this.state.alunos;
+alunos.al_codCurso = Number(alunos.al_codCurso);
+alunos.imageFile = Image(alunos.imageFile);
+const dados = new FormData();
+dados.append("ra", alunos.ra);
+dados.append("nomeAluno", alunos.nomeAluno);
+dados.append("al_codCurso", alunos.al_codCurso);
+dados.append("nomeFoto", alunos.nomeFoto);
+dados.append("imageSrc", alunos.imageSrc);
+dados.append("imageFile", alunos.imageFile);
 const metodo = alunos.id ? 'put' : 'post'; 
-
 const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
 axios[metodo](url, alunos).then(resp => {
 const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
@@ -127,18 +132,23 @@ handleCodCursoChange = (event) => {
   }
 
 
+
 imgSelectHandler = (e) => {
   if(e.target.files.length !==0){
     const alunos = { ...this.state.alunos };
-    alunos.nomeFoto = URL.createObjectURL(e.target.files[0]);    
-    alunos.imageSrc = '/img/' + alunos.imageFile;
+    
+      alunos.imageSrc = '/img/' + alunos.imageFile;
+      alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
+      alunos.nomeFoto = (alunos.imageFile).toString;
+       
     this.setState({ alunos });
       
   }
    else {
     const alunos = {...this.state.alunos};
     alunos.imageSrc = '/img/';
-    alunos.nomeFoto = defaultImageFile;
+    alunos.imageFile = defaultImageFile;
+    alunos.nomeFoto = (alunos.imageFile).toString;
     this.setState({ alunos })
     window("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
    }  
