@@ -100,7 +100,7 @@ namespace ProjetoEscola_API.Controllers
                    model.ra = dados.ra;
                    model.nomeAluno = dados.nomeAluno;
                    model.al_codCurso = dados.al_codCurso;
-                   model.imageFile = Image(dados.imageFile); 
+                   model.imageFile = IFormFile(dados.imageFile); 
                    model.imageSrc = dados.imageSrc;
                    model.nomeFoto =  await SaveImage(dados.imageFile) = dados.nomeFoto;
 
@@ -141,9 +141,9 @@ namespace ProjetoEscola_API.Controllers
                 result.ra = dadosCadastroAlunoAlt.ra;
                 result.nomeAluno = dadosCadastroAlunoAlt.nomeAluno;
                 result.al_codCurso = dadosCadastroAlunoAlt.al_codCurso;
-                result.imageFile = Image(dadosCadastroAlunoAlt.imageFile);
+                result.imageFile = IFormFile(dadosCadastroAlunoAlt.imageFile);
                 result.imageSrc = dadosCadastroAlunoAlt.imageSrc;
-                result.nomeFoto =  await SaveImage(dadosCadastroAlunoAlt.imageFile) = dadosCadastroAluno.nomeFoto;
+                result.nomeFoto =  await SaveImage(dadosCadastroAlunoAl.imageFile) = dadosCadastroAlunoAlt.nomeFoto;
 
         
                 await _context.SaveChangesAsync();
@@ -191,7 +191,7 @@ namespace ProjetoEscola_API.Controllers
             string nomeFoto = new String(Path.GetFileWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ','-');
             nomeFoto = nomeFoto+DateTime.Now.ToString("yymmssfff")+Path.GetExtension(imageFile.FileName);
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", nomeFoto);
-            using(var fileStream = new FileStream(imagePath, FileModel.Create))
+            using(var fileStream = new FileStream(imagePath, FileMode.Create))
                   {
                        await imageFile.CopyToAsync(fileStream);
                       
