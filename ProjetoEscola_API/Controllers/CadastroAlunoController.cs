@@ -188,7 +188,7 @@ namespace ProjetoEscola_API.Controllers
         [NonAction]
         public async Task<string> SaveImage(IFormFile imageFile, HttpContext httpContext)
         {
-            string nomeFoto = String(Path.GetFileWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace('','-');
+            string nomeFoto = new String(Path.GetFileWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ','-');
             nomeFoto = nomeFoto+DateTime.Now.ToString("yymmssfff")+Path.GetExtension(imageFile.FileName);
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", nomeFoto);
             using(var fileStream = new FileStream(imagePath, FileModel.Create))
