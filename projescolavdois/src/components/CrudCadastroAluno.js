@@ -73,8 +73,11 @@ dados.append("imageFile", alunos.imageFile);
   const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
   const corpo = {headers:{ 'Content-type':`multipart/form-data`, }}
   
+  if(url === urlAPIAlunoPost){
+    window.confirm("O cadastro do(a) aluno(a)" + alunos.ra + "foi salvo com sucesso");
+  }  
   axios[metodo](url, alunos, dados, corpo).then(resp => {
-  const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
+    const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
   this.setState({ alunos: initialState.alunos, dados, corpo, listaDeAluno }); 
   });  
 }
@@ -154,7 +157,7 @@ imgSelectHandler = (e) => {
     alunos.imageFile = defaultImageFile;
     alunos.nomeFoto = (alunos.imageFile).toString;
     this.setState({ alunos })
-    window("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
+    window.confirm("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
    }  
  
 }
