@@ -59,7 +59,8 @@ componentDidMount() {
             }
     
             
-        filtrarEstudante() { 
+        filtrarEstudante(e) { 
+            e.preventDefault();
             const estudantes = this.state.estudantes;             
             estudantes.al_codCurso = Number(estudantes.al_codCurso)
             const url = urlAPIEstudanteCodCurso + `/${estudantes.al_codCurso}`; 
@@ -68,7 +69,6 @@ componentDidMount() {
               this.setState({ estudantes: initialState.estudantes, listaDeEstudante }); 
             });}
 
-    
        
 
 

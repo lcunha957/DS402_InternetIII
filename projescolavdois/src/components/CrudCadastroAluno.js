@@ -25,7 +25,7 @@ const defaultImageFile = '/img/image_placeholder.png';
  
  
 const initialState= { 
-alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", imageFile:defaultImageFile, imageSrc:'/img/', nomeFoto:''},
+alunos:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:""},
 listaDeAluno:[],
  };
 
@@ -61,14 +61,6 @@ this.setState({ alunos: initialState.alunos });
 e.preventDefault();
 const alunos = this.state.alunos;
 alunos.al_codCurso = Number(alunos.al_codCurso);
-alunos.imageFile = this.imgSelectHandler(alunos.imageFile);
-const model = new FormData();
-model.append("ra", alunos.ra);
-model.append("nomeAluno", alunos.nomeAluno);
-model.append("al_codCurso", alunos.al_codCurso);
-model.append("nomeFoto", alunos.nomeFoto);
-model.append("imageSrc", alunos.imageSrc);
-
 
   const metodo = alunos.id ? 'put' : 'post';
   const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
@@ -140,29 +132,6 @@ handleCodCursoChange = (event) => {
   }
 
 
-  imgSelectHandler = (e) => {
-    if(e.target.files.length !==0){
-      const alunos = { ...this.state.alunos };
-      
-        alunos.imageSrc = "C:/Users/User/Documents/GitHub/DS402_InternetIII/projescolavdois/public/img" + alunos.imageFile;
-        alunos.imageFile = URL.createObjectURL(e.target.files[0]);    
-        alunos.nomeFoto = (alunos.imageFile).toString;
-         
-      this.setState({ alunos });
-        
-    }
-     else {
-      const alunos = {...this.state.alunos};
-      alunos.imageSrc = '/img/';
-      alunos.imageFile = defaultImageFile;
-      alunos.nomeFoto = (alunos.imageFile).toString;
-      this.setState({ alunos })
-      window.confirm("Nenhuma imagem adicionada, favor adicionar uma imagem ao cadastro de aluno");
-     }  
-   
-  }
-
-
 renderForm() {
 return (
 <div className="inclui-container">
@@ -183,11 +152,7 @@ defaultValue={this.state.alunos.nomeAluno} onChange={ e => this.atualizaCampo(e)
 <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
 {cursos.nomeCurso}</option>))}
 </select>
-               
-<label> Imagem: </label> 
-<img src={this.state.alunos.imageFile} className="card-img-left" alt="ver imagem" width={205} height={200}></img>
-<input type="file" name="imagem" accept="image/*" className="touro" onChange={this.imgSelectHandler.bind(this)}></input> 
-             
+                            
 <button className="botaoSalvar" type="submit" onClick={e => this.salvar(e)} > Salvar </button> 
 
 <button className="botaoCancelar" type="reset" onClick={e => this.limpar(e)} > Cancelar </button> </div>)}
