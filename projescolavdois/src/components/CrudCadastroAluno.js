@@ -6,7 +6,6 @@ import axios from 'axios';
 import "./CrudCadastroAluno.css";
 
 import Main from "./template/Main";
-import { Image } from "react-bootstrap";
 
 const title = "Cadastrando os Alunos";
 
@@ -21,7 +20,6 @@ const urlAPIAlunoPost = "http://localhost:5277/api/CadastroAluno/post";
 const urlAPIAlunoDelete = "http://localhost:5277/api/CadastroAluno/delete";
 
 //const urlAPIAlunoGetId = "http://localhost:5277/api/CadastroAluno/CadastroAlunoId";
-const defaultImageFile = '/img/image_placeholder.png';
  
  
 const initialState= { 
@@ -64,14 +62,13 @@ alunos.al_codCurso = Number(alunos.al_codCurso);
 
   const metodo = alunos.id ? 'put' : 'post';
   const url = alunos.id ? `${urlAPIAlunoPut}/${alunos.id}` : urlAPIAlunoPost;
-  const corpo = {headers:{ 'Content-type':`multipart/form-data`, }}
   
   if(url === urlAPIAlunoPost){
     window.confirm("O cadastro do(a) aluno(a)" + alunos.ra + "foi salvo com sucesso");
   }  
-  axios[metodo](url, alunos, model, corpo).then(resp => {
+  axios[metodo](url, alunos).then(resp => {
     const listaDeAluno = this.getListaDeAlunosAtualizada(resp.data);
-  this.setState({ alunos: initialState.alunos, model, corpo, listaDeAluno }); 
+  this.setState({ alunos: initialState.alunos, listaDeAluno }); 
   });  
 }
 
