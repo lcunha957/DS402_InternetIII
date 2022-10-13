@@ -8,8 +8,6 @@ import "./Carometro.css";
 
 import Card from 'react-bootstrap/Card';
 
-import ImagensAlunos from "./ImagensAlunos";
-
 const title = "Portfólio das turmas";
 
 const urlAPIEstudante="http://localhost:5277/api/CadastroAluno/GetAll";
@@ -18,9 +16,33 @@ const urlAPICurso="http://localhost:5277/api/curso";
 
 const urlAPIEstudanteCodCurso = "http://localhost:5277/api/CadastroAluno/CadastroAlunoCodigoCurso"
 
+const img01 = '../public/img/img01.jpg';
+
+const img02 = '../public/img/img02.jpg';
+
+const img03 = '../public/img/img03.jpg';
+
+const img04 = '../public/img/img04.jpg';
+
+const img05 = '../public/img/img05.jpg';
+
+const img06 = '../public/img/img06.jpg';
+
+const img07 = '../public/img/img07.jpg';
+
+const img08 = '../public/img/img08.jpg';
+
+
 const initialState= { 
-    estudantes:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:"", imagem:""},
+    estudantes:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:""},
+    gatos:[
+    {id: 1,title:"gatinho01",foto: [img01]},{id: 2,title:"gatinho02",foto: [img02]},
+    {id: 3,title:"gatinho03",foto: [img03]},{id: 4,title:"gatinho04",foto: [img04]},
+    {id: 5,title:"gatinho05",foto: [img05]},{id: 6,title:"gatinho06",foto: [img06]},
+    {id: 7,title:"gatinho07",foto: [img07]},{id: 8,title:"gatinho08",foto: [img08]}, 
+    ],
     listaDeEstudante:[],
+    listaDeGatos:[]
      };
 
      const Curso = {
@@ -34,10 +56,10 @@ const initialState= {
 export default class Carometro extends Component{
     state={ ...initialState, ...Curso }
 
-    
+  
 componentDidMount() {
     axios(urlAPIEstudante).then(resp => {
-    this.setState ({ listaDeEstudante: resp.data })
+    this.setState ({ listaDeEstudante: resp.data, listaDeGatos: resp.data })
     });
     
     axios(urlAPICurso).then(resp =>{
@@ -45,10 +67,13 @@ componentDidMount() {
     });
 }
 
-    getListaDeEstudantesPorCodCursoAtualizada(estudantes,add = true) {
+    getListaDeEstudantesPorCodCursoAtualizada(estudantes, gatos, add = true) {
         const listaDeEstudante = this.state.listaDeEstudante.filter(a => a.al_codCurso !== estudantes.al_codCurso);
-        if (add) listaDeEstudante.unshift(estudantes); 
-        return listaDeEstudante;
+        const listaDeGatos = this.state.listaDeGatos.filter(b => b.id !== gatos.id);
+        if (add) 
+        {listaDeEstudante.unshift(estudantes);
+        listaDeGatos.unshift(gatos);} 
+        return listaDeEstudante, listaDeGatos;
         }
 
                 
@@ -61,12 +86,15 @@ componentDidMount() {
             
         filtrarEstudante(e) { 
             e.preventDefault();
-            const estudantes = this.state.estudantes;             
+            const estudantes = this.state.estudantes;
+            const gatos = this.state.gatos;
+            gatos.id = Number(gatos.id);             
             estudantes.al_codCurso = Number(estudantes.al_codCurso)
             const url = urlAPIEstudanteCodCurso + `/${estudantes.al_codCurso}`; 
-            axios['get'](url, estudantes).then(resp => {
+            axios['get'](url, estudantes, gatos).then(resp => {
             const listaDeEstudante = this.getListaDeEstudantePorCodCursoAtualizada(resp.data);
-              this.setState({ estudantes: initialState.estudantes, listaDeEstudante }); 
+            const listaDeGatos = this.getListaDeEstudantePorCodCursoAtualizada(resp.data);
+              this.setState({ estudantes: initialState.estudantes, listaDeEstudante, listaDeGatos }); 
             });}
 
        
@@ -96,7 +124,8 @@ componentDidMount() {
             <>
             <Card key={estudantes.id} className="lontra">
                    <Card.Body>
-              <ImagensAlunos/>
+                {this.state.listaDeGatos.map((gatos) =>
+                  <Card.Img key={gatos.id} className="pato" src={gatos.foto} alt="lista de gatos"></Card.Img>)}    
                 <Card.Title className="chafariz"> RA: {estudantes.ra} </Card.Title>
                 <Card.Subtitle className="ornitorrinco"> Nome do Aluno: {estudantes.nomeAluno}</Card.Subtitle>
                 <Card.Text className="zebra"> Código do Curso: {estudantes.al_codCurso}</Card.Text>

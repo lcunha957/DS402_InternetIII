@@ -55,7 +55,7 @@ this.setState({ alunos: initialState.alunos });
 }
 
       
- async salvar(e) { 
+ salvar(e) { 
 e.preventDefault();
 const alunos = this.state.alunos;
 alunos.al_codCurso = Number(alunos.al_codCurso);
