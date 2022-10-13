@@ -163,7 +163,6 @@ renderTable() {
 <th className="tabTitCadRa">Ra</th>
 <th className="tabTitCadNome">Nome</th>
 <th className="tabTitCadCurso">Curso</th>
-<th className="tabImagem"> Imagem </th>
 <th className="tabAcoes"> Ações </th>
 </tr>
 </thead>
