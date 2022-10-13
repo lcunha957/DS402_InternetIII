@@ -6,6 +6,8 @@ import Main from "./template/Main";
 
 import "./Carometro.css";
 
+import ImagensGatos from './ImagensGatos';
+
 import Card from 'react-bootstrap/Card';
 
 const title = "Portfólio das turmas";
@@ -16,92 +18,107 @@ const urlAPICurso="http://localhost:5277/api/curso";
 
 const urlAPIEstudanteCodCurso = "http://localhost:5277/api/CadastroAluno/CadastroAlunoCodigoCurso"
 
-const img01 = '../public/img/img01.jpg';
+const img01 = "./img/img01.jpg";
 
-const img02 = '../public/img/img02.jpg';
-
-const img03 = '../public/img/img03.jpg';
-
-const img04 = '../public/img/img04.jpg';
-
-const img05 = '../public/img/img05.jpg';
-
-const img06 = '../public/img/img06.jpg';
-
-const img07 = '../public/img/img07.jpg';
-
-const img08 = '../public/img/img08.jpg';
-
-
+/*
 const initialState= { 
     estudantes:{ id: 0,  ra:"", nomeAluno:"", al_codCurso:""},
-    gatos:[
-    {id: 1,title:"gatinho01",foto: [img01]},{id: 2,title:"gatinho02",foto: [img02]},
-    {id: 3,title:"gatinho03",foto: [img03]},{id: 4,title:"gatinho04",foto: [img04]},
-    {id: 5,title:"gatinho05",foto: [img05]},{id: 6,title:"gatinho06",foto: [img06]},
-    {id: 7,title:"gatinho07",foto: [img07]},{id: 8,title:"gatinho08",foto: [img08]}, 
-    ],
     listaDeEstudante:[],
-    listaDeGatos:[]
      };
-
-     const Curso = {
-        cursos:{id: 0, codCurso:"", nomeCurso:"", periodo: ""},
-        listaDeCurso:[],
-        };
-        
-     
+  */   
      
      
 export default class Carometro extends Component{
-    state={ ...initialState, ...Curso }
-
-  
-componentDidMount() {
-    axios(urlAPIEstudante).then(resp => {
-    this.setState ({ listaDeEstudante: resp.data, listaDeGatos: resp.data })
-    });
-    
-    axios(urlAPICurso).then(resp =>{
-    this.setState({ listaDeCurso: resp.data })   
-    });
-}
-
-    getListaDeEstudantesPorCodCursoAtualizada(estudantes, gatos, add = true) {
-        const listaDeEstudante = this.state.listaDeEstudante.filter(a => a.al_codCurso !== estudantes.al_codCurso);
-        const listaDeGatos = this.state.listaDeGatos.filter(b => b.id !== gatos.id);
-        if (add) 
-        {listaDeEstudante.unshift(estudantes);
-        listaDeGatos.unshift(gatos);} 
-        return listaDeEstudante, listaDeGatos;
+    constructor(props){
+        super(props);
+        this.state={
+            estudantes: [],
+            listaDeEstudante:[],
+            cursos:[],
+            listaDeCurso:[]
+            };
         }
+
+
+         fetchDataEstudante(){
+            fetch(urlAPIEstudante)
+            .then( res => res.json())
+            .then(
+                (result) => {
+                     this.setState({ estudantes: result
+                    });
+                    console.log("estudantes: " + result);
+                },
+            (error) => {
+            this.setState({error});
+            })
+         }
+  
+          fetchDataCurso(){
+            fetch(urlAPICurso)
+            .then(res => res.json())
+            .then((result2) => {
+                this.setState ({ cursos: result2});
+                console.log("cursos: " + result2);
+            },
+            (error2) =>{
+                this.setState({error2}); 
+            })
+          }
+
+         
+        componentDidMount(){
+            this.fetchDataEstudante()
+       this.fetchDataCurso();
+        }
+      
+  
+/*componentDidMount() {
+    axios(urlAPIEstudante).then(resp => {
+    this.setState ({ listaDeEstudante: resp.data})
+    });*/
+    
+    
+
+     
+    getListaCursosEstudantes() {
+        const estudantes = this.state.estudantes;
+        const listaDeEstudante = estudantes.map((h) => (h.al_codCurso));
+        return(
+            <Card key={estudantes.id} className="lontra">
+              <img src={img01} alt="teste" key={estudantes.id} style={{width: '230px', height:'100px'}}></img>
+              <p className="chafariz"> RA:{estudantes.ra}</p> 
+              <p className="ornitorrinco"> Aluno: {estudantes.nomeAluno} </p>
+              <p className="zebra"> Curso: {estudantes.al_codCurso}</p>
+            </Card> 
+        ) 
+        
+        }
+
 
                 
         handleCodCursoChange = (event) => {
-            const estudantes = { ...this.state.estudantes };
+            const estudantes = this.state.estudantes;
             estudantes.al_codCurso = Number(event.target.value);
             this.setState({ estudantes })
             }
     
             
-        filtrarEstudante(e) { 
-            e.preventDefault();
-            const estudantes = this.state.estudantes;
-            const gatos = this.state.gatos;
-            gatos.id = Number(gatos.id);             
+        filtro(g){ 
+            g.preventDefault();
+            const estudantes = this.state.estudantes;          
             estudantes.al_codCurso = Number(estudantes.al_codCurso)
             const url = urlAPIEstudanteCodCurso + `/${estudantes.al_codCurso}`; 
-            axios['get'](url, estudantes, gatos).then(resp => {
-            const listaDeEstudante = this.getListaDeEstudantePorCodCursoAtualizada(resp.data);
-            const listaDeGatos = this.getListaDeEstudantePorCodCursoAtualizada(resp.data);
-              this.setState({ estudantes: initialState.estudantes, listaDeEstudante, listaDeGatos }); 
+            axios['get'](url, estudantes).then(resp => {
+           const listaDeEstudante = this.getListaCursosEstudantes(resp.data);
+              this.setState({ estudantes, listaDeEstudante }); 
             });}
 
        
 
 
        renderTable(){
-   
+
         return(
             <div class="container" className= "leao">
             
@@ -109,26 +126,24 @@ componentDidMount() {
             <tr>
             <select className="seletorCurso"  name="infoCurso" onChange={event => this.handleCodCursoChange(event)}>
                 <option value={"selecionar"}> Selecione um curso </option>
-            {this.state.listaDeCurso.map((cursos) => (
-             <option key={cursos.id}  name="codigoCurso" value={cursos.codCurso}>
-         {cursos.codCurso} - {cursos.nomeCurso} </option>))}
+            {this.state.cursos.map((d) => (
+             <option key={d.id}  name="codigoCurso" value={d.codCurso}>
+         {d.codCurso} - {d.nomeCurso}</option>))}
              </select>
+             <button className="btnFiltrar" onClick={g => this.filtro(g)}> Filtrar </button>
             </tr>
-            <button className="btnFiltrar" onClick={e => this.filtrarEstudante(e)}> Filtrar </button>
-            </th>
-            
+             </th>
             <th>
             <div class= "Row">
             <div class="col-md-2">
-            {this.state.listaDeEstudante.map((estudantes) => 
+            {this.state.estudantes.map((f) => 
             <>
-            <Card key={estudantes.id} className="lontra">
+            <Card key={f.id} className="lontra">
                    <Card.Body>
-                {this.state.listaDeGatos.map((gatos) =>
-                  <Card.Img key={gatos.id} className="pato" src={gatos.foto} alt="lista de gatos"></Card.Img>)}    
-                <Card.Title className="chafariz"> RA: {estudantes.ra} </Card.Title>
-                <Card.Subtitle className="ornitorrinco"> Nome do Aluno: {estudantes.nomeAluno}</Card.Subtitle>
-                <Card.Text className="zebra"> Código do Curso: {estudantes.al_codCurso}</Card.Text>
+                    <ImagensGatos date = {f.id}/>
+                <Card.Title className="chafariz"> RA: {f.ra} </Card.Title>
+                <Card.Subtitle className="ornitorrinco"> Nome do Aluno: {f.nomeAluno}</Card.Subtitle>
+                <Card.Text className="zebra"> Código do Curso: {f.al_codCurso}</Card.Text>
               </Card.Body>
                 </Card>
                 <hr/>
