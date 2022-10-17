@@ -10,6 +10,8 @@ import ImagensGatos from './ImagensGatos';
 
 import Card from 'react-bootstrap/Card';
 
+import CardGroup from 'react-bootstrap/CardGroup';
+
 const title = "Portfólio das turmas";
 
 const urlAPIEstudante="http://localhost:5277/api/CadastroAluno/GetAll";
@@ -134,7 +136,7 @@ export default class Carometro extends Component{
             </tr>
              </th>
             <th>
-            <div class= "Row">
+            <CardGroup>
             <div class="col-md-2">
             {this.state.estudantes.map((f) => 
             <>
@@ -150,7 +152,7 @@ export default class Carometro extends Component{
                 </>  
             )}
             </div>
-            </div>
+            </CardGroup>
           </th>
     
      </div>
