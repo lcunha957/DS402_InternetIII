@@ -29,7 +29,7 @@ export default function TesteCarometro() {
 
     const [estudantes, setEstudantes] = useState([]);
    
-    useEffect() {
+    useEffect(){
    axios(urlAPIEstudante).then(resp =>{
        this.setEstudantes({ estudantes: resp.data })
    });
