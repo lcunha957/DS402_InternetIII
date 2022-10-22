@@ -56,7 +56,7 @@ export default function TesteCarometro() {
     const [items, setItems] = useState([]);
     const [imagens, setImages] = useState([]);
   
-    const [catUrls, setCatUrls] = useState();
+   
 
  
     useEffect(() =>{
@@ -70,33 +70,18 @@ export default function TesteCarometro() {
         );
     }, [])
 
-    const getCat = useCallback(() => {
-        console.log("Hello World");
+    const imagens = {
+        figuras: { id: "", url: '', width: 0, height: 0 },
+        listaDeFiguras: []
     
-        let catImageUrlList = [];
-        // fetch http request
-        fetch(urlAPIGatinhos)
-          .then((res) => res.json()) //gives data in json
-          .then((cats) => {
-            console.log("Cats: ", cats);
-    
-            for (let i = 0; i < cats.length; i++) {
-              catImageUrlList.push(cats[i].url);
-            }
-    
-            setCatUrls(catImageUrlList);
-          })
-          .catch((error) => {
-            console.log("Erro: ", error);
-          });
-      }, [setCatUrls]);
+    }
 
-      useEffect(() => {
-        console.log("Carregando os seus amigos felinos...");
-        getCat();
-      }, [getCat]);
-    
-
+     useEffect(() =>{
+         axios.get(urlAPIGatinhos).then(resp =>{
+           setImages(resp.data);   
+         })
+     },[])
+     
     if (error){
         return<>{error.message}</>
     } else if (!isLoaded){
@@ -117,6 +102,7 @@ export default function TesteCarometro() {
                            )}
                                 </div>
                                 <div className="card-content">
+                                 
                                     <h2 className="card-name"> ra: {item.ra}</h2>
                                     <ol className="card-list">
                                         <li>
