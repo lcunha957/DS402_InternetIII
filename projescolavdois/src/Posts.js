@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, Input } from 'semantic-ui-react'
-export default function Posts() {
+import { Card, Input, Dropdown, Select } from 'semantic-ui-react'
+export default function Posts(props) {
     
     const [searchInput, setSearchInput] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
@@ -21,6 +21,8 @@ setSearchInput(searchValue)
 if (searchInput !== ''){
     const filteredData = APIData.filter((item) =>{return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
 })
+console.log(filteredData)
+
 setFilteredResults(filteredData)
 }
 else{
@@ -29,12 +31,18 @@ else{
   
 }
 
+
+ 
+
     return (
         <div style={{ padding: 20 }}>
             <Input icon='search'
                 placeholder='Search...'
                 onChange ={(e) => searchItems(e.target.value)}
             />
+         
+              
+
             <Card.Group itemsPerRow={3} style={{ marginTop: 20 }}>
                 {searchInput.length > 1 ? (
                     filteredResults.map((item) => {
