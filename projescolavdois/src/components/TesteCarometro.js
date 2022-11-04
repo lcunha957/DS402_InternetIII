@@ -28,13 +28,20 @@ import Row from 'react-bootstrap/Row';
 export default function TesteCarometro() {
 
     const [estudantes, setEstudantes] = useState([]);
-   
-    useEffect() {
-   axios(urlAPIEstudante).then(resp =>{
-       this.setEstudantes({ estudantes: resp.data })
-   });
-  }
+    const [APIEstudante, SetAPIEstudante] = useState('');
+    const [APIEstudanteCodCurso, SetAPIEstudanteCodCurso] = useState('');
+     
+    useEffect(() =>{
+        axios.get(`http://localhost:5277/api/CadastroAluno/GetAll`).then((response) =>{
+            SetAPIEstudante(response.data);
+        })
+    },[])    
 
+    useEffect(() =>{
+        axios.get(`http://localhost:5277/api/CadastroAluno/CadastroAlunoCodigoCurso`).then((response) =>{
+            SetAPIEstudanteCodCurso(response.data);
+        })
+    },[])   
 
 /*componentDidMount() {
     axios(urlAPIAluno).then(resp => {
